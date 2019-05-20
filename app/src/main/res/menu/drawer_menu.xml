@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:n1="http://schemas.android.com/apk/res/android"
+    >
+    <group
+        n1:checkableBehavior="single">
+        <item
+            n1:id="@+id/nav_kegiatan"
+            n1:icon="@drawable/task"
+            n1:title="Kegiatan" />
+        <item
+            n1:id="@+id/nav_date"
+            n1:icon="@drawable/ic_date_black"
+            n1:title="Kalender Hijriah" />
+        <item
+            n1:id="@+id/nav_belajar"
+            n1:icon="@drawable/ic_belajar_gray"
+            n1:title="Belajar Islam" />
+        <item
+            n1:id="@+id/nav_quran"
+            n1:icon="@drawable/quran_gray"
+            n1:title="Al-Qur'an" />
+    </group>
+    <group android:id="@+id/nav_grup_help"
+        android:checkableBehavior="single"
+        android:visible="true"
+        >
+        <item
+            n1:id="@+id/nav_news"
+            n1:icon="@drawable/news_gray"
+            n1:title="Berita" />
+        <item
+            n1:id="@+id/nav_setting"
+            n1:icon="@drawable/ic_setting_black"
+            n1:title="Login" />
+        <item
+            n1:id="@+id/nav_about"
+            n1:icon="@drawable/ic_people2_black"
+            n1:title="Struktur Organisasi" />
+    </group>
+</menu>

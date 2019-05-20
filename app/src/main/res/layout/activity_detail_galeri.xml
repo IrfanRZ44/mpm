@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent"
+    n1:background="@color/putihGelap1">
+
+    <RelativeLayout
+        n1:id="@+id/customToolbar"
+        n1:layout_width="fill_parent"
+        n1:layout_height="55.0dip"
+        n1:background="@color/green1">
+
+        <ImageView
+            n1:id="@+id/back"
+            n1:layout_width="25.0dip"
+            n1:layout_height="30.0dip"
+            n1:layout_centerVertical="true"
+            n1:layout_marginLeft="10.0dip"
+            n1:src="@drawable/ic_back_white" />
+
+        <TextView
+            n1:id="@+id/text_title_anggota"
+            n1:layout_width="wrap_content"
+            n1:layout_height="fill_parent"
+            n1:layout_marginLeft="25.0dip"
+            n1:layout_toRightOf="@+id/back"
+            n1:gravity="center_vertical"
+            n1:text="Galeri"
+            n1:textColor="@color/putih"
+            n1:textSize="17.0sp"
+            n1:textStyle="bold" />
+
+        <ImageView
+            n1:layout_width="@dimen/width70"
+            n1:layout_height="wrap_content"
+            n1:layout_alignParentRight="true"
+            n1:layout_centerVertical="true"
+            n1:layout_marginBottom="@dimen/margin_standard"
+            n1:layout_marginRight="@dimen/margin_small"
+            n1:layout_marginTop="@dimen/margin_standard"
+            n1:src="@drawable/mpm" />
+    </RelativeLayout>
+
+    <ScrollView
+        n1:layout_width="fill_parent"
+        n1:layout_height="wrap_content"
+        n1:layout_below="@+id/customToolbar"
+        n1:layout_margin="@dimen/margin_small"
+        n1:background="@drawable/border_rl_white">
+
+        <RelativeLayout
+            n1:layout_width="fill_parent"
+            n1:layout_height="fill_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:n2="http://schemas.android.com/apk/res-auto"
+                n1:id="@+id/cv_user"
+                n1:layout_width="40.0dip"
+                n1:layout_height="40.0dip"
+                n1:layout_margin="@dimen/margin_standard"
+                n1:src="@drawable/mpm75"
+                n2:civ_circle_background_color="@color/putih" />
+
+            <TextView
+                n1:id="@+id/text_user1"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_marginLeft="@dimen/margin_small"
+                n1:layout_marginTop="@dimen/margin_standard_big"
+                n1:layout_toRightOf="@+id/cv_user"
+                n1:textColor="@color/hitamGray"
+                n1:textSize="@dimen/title_font"
+                n1:textStyle="bold" />
+
+            <ImageView
+                n1:id="@+id/img_galeri"
+                n1:layout_width="fill_parent"
+                n1:layout_height="fill_parent"
+                n1:layout_below="@+id/cv_user" />
+
+            <TextView
+                n1:id="@+id/text_user2"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/img_galeri"
+                n1:layout_marginLeft="@dimen/margin_small"
+                n1:textColor="@color/hitamGray"
+                n1:textSize="@dimen/title_font"
+                n1:textStyle="bold" />
+
+            <TextView
+                n1:id="@+id/text_desc"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/img_galeri"
+                n1:layout_marginLeft="@dimen/margin_small"
+                n1:layout_toRightOf="@+id/text_user2"
+                n1:textColor="@color/hitamGray"
+                n1:textSize="@dimen/title_font" />
+
+            <TextView
+                n1:id="@+id/text_time"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/text_user2"
+                n1:layout_marginBottom="@dimen/margin_small"
+                n1:layout_marginLeft="@dimen/margin_small"
+                n1:textColor="@color/putihGelap2"
+                n1:textSize="@dimen/text_font" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

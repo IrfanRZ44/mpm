@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/putihGelap1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/putihGelap1"
+        >
+
+        <RelativeLayout
+            android:id="@+id/customToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="55.0dip"
+            android:background="@color/green1">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="25.0dip"
+                android:layout_height="30.0dip"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10.0dip"
+                android:src="@drawable/ic_back_white" />
+
+            <TextView
+                android:id="@+id/text_title_anggota"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25.0dip"
+                android:layout_toRightOf="@+id/back"
+                android:gravity="center_vertical"
+                android:text="Detail Kegiatan"
+                android:textColor="@color/putih"
+                android:textSize="17.0sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_small"
+                android:src="@drawable/ic_download_white"
+                android:id="@+id/btn_download"
+                />
+        </RelativeLayout>
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/img_kegiatan"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_below="@+id/customToolbar"
+            android:layout_margin="@dimen/margin_standard"
+            android:scaleType="centerInside"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_kegiatan"
+            android:layout_margin="@dimen/margin_small"
+            android:background="@drawable/border_rl_green"
+            android:padding="@dimen/margin_standard">
+
+            <TextView
+                android:id="@+id/text_nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:text="Nama Kegiatan : "
+                android:textColor="@color/putih"
+                android:textSize="@dimen/title_font" />
+
+            <TextView
+                android:id="@+id/text_tempat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/isi_nama"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:text="Tempat               : "
+                android:textColor="@color/putih"
+                android:textSize="@dimen/title_font" />
+
+            <TextView
+                android:id="@+id/text_tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_tempat"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:text="Tanggal               : "
+                android:textColor="@color/putih"
+                android:textSize="@dimen/title_font" />
+
+            <TextView
+                android:id="@+id/text_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_tanggal"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:text="Deskripsi             : "
+                android:textColor="@color/putih"
+                android:textSize="@dimen/title_font" />
+
+            <TextView
+                android:id="@+id/isi_nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:layout_toRightOf="@+id/text_nama"
+                android:textColor="@color/putih"
+                android:textSize="@dimen/title_font" />
+
+            <TextView
+                android:id="@+id/isi_tempat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/isi_nama"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:layout_toRightOf="@+id/text_tempat"
+                android:textColor="@color/putih"
+                android:textSize="@dimen/title_font" />
+
+            <TextView
+                android:id="@+id/isi_tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/isi_tempat"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:layout_toRightOf="@+id/text_tanggal"
+                android:textColor="@color/putih"
+                android:textSize="@dimen/title_font" />
+
+            <TextView
+                android:id="@+id/isi_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/isi_tanggal"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:layout_toRightOf="@+id/text_desc"
+                android:textColor="@color/putih"
+                android:textSize="@dimen/title_font" />
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

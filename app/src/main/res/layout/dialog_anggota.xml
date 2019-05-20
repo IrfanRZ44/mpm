@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:id="@+id/customdialog"
+    n1:layout_width="fill_parent"
+    n1:layout_height="wrap_content"
+    n1:layout_gravity="center_horizontal"
+    n1:layout_margin="@dimen/margin_standard"
+    n1:background="@drawable/border_rl_white"
+    n1:padding="10.0dip">
+
+    <RelativeLayout
+        n1:layout_width="fill_parent"
+        n1:layout_height="wrap_content">
+
+        <ImageView
+            n1:id="@+id/img_dialog_fragment"
+            n1:layout_width="fill_parent"
+            n1:layout_height="250.0dip" />
+
+        <TextView
+            n1:id="@+id/nama"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/img_dialog_fragment"
+            n1:layout_marginBottom="@dimen/margin_small"
+            n1:layout_marginLeft="@dimen/margin_big"
+            n1:layout_marginTop="@dimen/margin_small"
+            n1:text="Nama       :"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <TextView
+            n1:id="@+id/alamat"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/text_nama"
+            n1:layout_marginBottom="@dimen/margin_small"
+            n1:layout_marginLeft="@dimen/margin_big"
+            n1:layout_marginTop="@dimen/margin_small"
+            n1:text="Alamat     :"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <TextView
+            n1:id="@+id/kontak"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/text_alamat"
+            n1:layout_marginBottom="@dimen/margin_small"
+            n1:layout_marginLeft="@dimen/margin_big"
+            n1:layout_marginTop="@dimen/margin_small"
+            n1:text="Kontak     :"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <TextView
+            n1:id="@+id/umur"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/text_kontak"
+            n1:layout_marginLeft="@dimen/margin_big"
+            n1:layout_marginTop="@dimen/margin_small"
+            n1:text="Umur         :"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <TextView
+            n1:id="@+id/jk"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/text_umur"
+            n1:layout_marginLeft="@dimen/margin_big"
+            n1:layout_marginTop="@dimen/margin_small"
+            n1:text="Jenis Kelamin     :"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <TextView
+            n1:id="@+id/text_nama"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/img_dialog_fragment"
+            n1:layout_margin="@dimen/margin_small"
+            n1:layout_toRightOf="@+id/nama"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <TextView
+            n1:id="@+id/text_alamat"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/text_nama"
+            n1:layout_margin="@dimen/margin_small"
+            n1:layout_toRightOf="@+id/alamat"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <TextView
+            n1:id="@+id/text_kontak"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/text_alamat"
+            n1:layout_margin="@dimen/margin_small"
+            n1:layout_toRightOf="@+id/kontak"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <TextView
+            n1:id="@+id/text_umur"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/text_kontak"
+            n1:layout_margin="@dimen/margin_small"
+            n1:layout_toRightOf="@+id/umur"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <TextView
+            n1:id="@+id/text_jk"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/text_umur"
+            n1:layout_margin="@dimen/margin_small"
+            n1:layout_toRightOf="@+id/jk"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <Button
+            n1:id="@+id/dialog_delete"
+            n1:layout_width="fill_parent"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/text_jk"
+            n1:layout_marginTop="@dimen/margin_standard"
+            n1:background="@drawable/border_btn_red"
+            n1:text="DELETE"
+            n1:textColor="@color/putih"
+            n1:visibility="gone" />
+
+        <Button
+            n1:id="@+id/dialog_dismiss"
+            n1:layout_width="fill_parent"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/dialog_delete"
+            n1:layout_marginTop="@dimen/margin_standard"
+            n1:background="@drawable/border_rl_green"
+            n1:text="BATAL"
+            n1:textColor="@color/putih" />
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent">
+
+    <ImageView
+        n1:layout_width="fill_parent"
+        n1:layout_height="fill_parent"
+        n1:scaleType="centerCrop"
+        n1:src="@drawable/bg_masjid" />
+
+    <RelativeLayout
+        n1:layout_width="fill_parent"
+        n1:layout_height="fill_parent"
+        n1:layout_marginBottom="@dimen/margin_standard"
+        n1:layout_marginLeft="@dimen/margin_standard"
+        n1:layout_marginRight="@dimen/margin_standard"
+        n1:layout_marginTop="55.0dip"
+        n1:background="@drawable/border_rl_white"
+        n1:padding="@dimen/margin_standard">
+
+        <TextView
+            n1:id="@+id/text_title"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_centerHorizontal="true"
+            n1:layout_marginTop="30.0dip"
+            n1:text="Daftar Angkatan"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+        <!--<Spinner-->
+            <!--n1:id="@+id/spinner_angkatan"-->
+            <!--n1:layout_width="fill_parent"-->
+            <!--n1:layout_height="50.0dip"-->
+            <!--n1:layout_below="@+id/text_title"-->
+            <!--n1:layout_marginTop="@dimen/margin_standard"-->
+            <!--n1:layout_toRightOf="@+id/text_anggota"-->
+            <!--n1:background="@drawable/spinner_green"-->
+            <!--n1:popupBackground="@drawable/border_spinner_green" />-->
+
+        <!--<GridView-->
+            <!--n1:id="@+id/gv_angkatan"-->
+            <!--n1:layout_width="fill_parent"-->
+            <!--n1:layout_height="fill_parent"-->
+            <!--n1:layout_below="@+id/spinner_angkatan"-->
+            <!--n1:layout_marginTop="@dimen/margin_standard"-->
+            <!--n1:columnWidth="100.0dip"-->
+            <!--n1:gravity="center"-->
+            <!--n1:horizontalSpacing="@dimen/margin_small"-->
+            <!--n1:numColumns="auto_fit"-->
+            <!--n1:stretchMode="columnWidth"-->
+            <!--n1:verticalSpacing="@dimen/margin_small" />-->
+    </RelativeLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:n2="http://schemas.android.com/apk/res-auto"
+        n1:layout_width="75.0dip"
+        n1:layout_height="75.0dip"
+        n1:layout_centerHorizontal="true"
+        n1:layout_marginTop="@dimen/margin_big"
+        n1:src="@drawable/mpm75"
+        n2:civ_circle_background_color="@color/putih" />
+</RelativeLayout>

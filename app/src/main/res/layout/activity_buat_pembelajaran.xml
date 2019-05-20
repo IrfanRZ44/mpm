@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:n1="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    n1:layout_width="match_parent"
+    n1:layout_height="match_parent"
+    tools:context="com.exomatik.mpm.mpm.Activity.BuatPembelajaran">
+    <RelativeLayout
+        n1:id="@+id/customToolbar"
+        n1:layout_width="fill_parent"
+        n1:layout_height="55.0dip"
+        n1:background="@color/green1">
+
+        <ImageView
+            n1:id="@+id/back"
+            n1:layout_width="25.0dip"
+            n1:layout_height="30.0dip"
+            n1:layout_centerVertical="true"
+            n1:layout_marginLeft="10.0dip"
+            n1:src="@drawable/ic_back_white" />
+
+        <TextView
+            n1:id="@+id/text_toolbar"
+            n1:layout_width="wrap_content"
+            n1:layout_height="fill_parent"
+            n1:layout_marginLeft="25.0dip"
+            n1:layout_toRightOf="@+id/back"
+            n1:gravity="center_vertical"
+            n1:text="Buat Pembelajaran"
+            n1:textColor="@color/putih"
+            n1:textSize="17.0sp"
+            n1:textStyle="bold" />
+
+        <ImageView
+            n1:layout_width="@dimen/width70"
+            n1:layout_height="wrap_content"
+            n1:layout_alignParentRight="true"
+            n1:layout_centerVertical="true"
+            n1:layout_marginBottom="@dimen/margin_standard"
+            n1:layout_marginRight="@dimen/margin_small"
+            n1:layout_marginTop="@dimen/margin_standard"
+            n1:src="@drawable/mpm" />
+    </RelativeLayout>
+    <ScrollView
+        n1:layout_width="match_parent"
+        n1:layout_height="match_parent"
+        n1:layout_below="@+id/customToolbar"
+        n1:background="@color/putihGelap1"
+        >
+        <RelativeLayout
+            n1:layout_width="match_parent"
+            n1:layout_height="match_parent"
+            n1:background="@color/putihGelap1"
+            n1:padding="@dimen/margin_small"
+            >
+            <RelativeLayout
+                n1:layout_width="match_parent"
+                n1:layout_height="wrap_content"
+                n1:background="@drawable/border_rl_green"
+                n1:padding="@dimen/margin_standard"
+                n1:id="@+id/rl_form"
+                >
+                <TextView
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:text="Pembelajaran"
+                    n1:textSize="@dimen/title_font"
+                    n1:textColor="@color/putih"
+                    n1:layout_centerHorizontal="true"
+                    n1:id="@+id/text_title"
+                    />
+                <EditText
+                    n1:layout_width="match_parent"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/text_title"
+                    n1:background="@drawable/border_et_putih"
+                    n1:layout_marginTop="@dimen/margin_standard"
+                    n1:padding="@dimen/margin_small"
+                    n1:textColor="@color/hitamGray"
+                    n1:textSize="@dimen/text_font"
+                    n1:maxLines="1"
+                    n1:id="@+id/et_nama_pembelajaran"
+                    n1:hint="Nama Pembelajaran"
+                    />
+                <EditText
+                    n1:layout_width="match_parent"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/et_nama_pembelajaran"
+                    n1:background="@drawable/border_et_putih"
+                    n1:layout_marginTop="@dimen/margin_standard"
+                    n1:padding="@dimen/margin_small"
+                    n1:textColor="@color/hitamGray"
+                    n1:textSize="@dimen/text_font"
+                    n1:lines="3"
+                    n1:maxLines="5"
+                    n1:id="@+id/et_isi_pembelajaran"
+                    n1:hint="Point Penting"
+                    n1:gravity="start"
+                    />
+                <EditText
+                    n1:layout_width="match_parent"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/et_isi_pembelajaran"
+                    n1:background="@drawable/border_et_putih"
+                    n1:layout_marginTop="@dimen/margin_standard"
+                    n1:padding="@dimen/margin_small"
+                    n1:textColor="@color/hitamGray"
+                    n1:textSize="@dimen/text_font"
+                    n1:lines="10"
+                    n1:maxLines="10"
+                    n1:gravity="start"
+                    n1:id="@+id/et_desc_pembelajaran"
+                    n1:hint="Penjelasan Lengkap"
+                    />
+            </RelativeLayout>
+            <Button
+                n1:id="@+id/btn_simpan"
+                n1:layout_width="fill_parent"
+                n1:layout_height="50.0dip"
+                n1:layout_below="@+id/rl_form"
+                n1:layout_marginTop="@dimen/margin_standard"
+                n1:background="@drawable/border_btn_green_white"
+                n1:text="SIMPAN"
+                n1:textColor="@color/green1"
+                n1:textSize="@dimen/text_font" />
+            <RelativeLayout
+                n1:id="@+id/btn_delete"
+                n1:layout_width="fill_parent"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/btn_simpan"
+                n1:background="@drawable/border_btn_red"
+                n1:padding="@dimen/margin_standard"
+                n1:visibility="gone"
+                n1:layout_marginTop="@dimen/margin_standard"
+                >
+
+                <ImageView
+                    n1:id="@+id/img_btn_delete"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:src="@drawable/ic_delete_white" />
+
+                <TextView
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_centerInParent="true"
+                    n1:text="Hapus"
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/title_font" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

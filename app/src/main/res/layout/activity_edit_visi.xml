@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:n1="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    n1:layout_width="match_parent"
+    n1:layout_height="match_parent"
+    tools:context="com.exomatik.mpm.mpm.Activity.EditVisi">
+    <RelativeLayout
+        n1:id="@+id/customToolbar"
+        n1:layout_width="fill_parent"
+        n1:layout_height="55.0dip"
+        n1:background="@color/green1">
+
+        <ImageView
+            n1:id="@+id/back"
+            n1:layout_width="25.0dip"
+            n1:layout_height="30.0dip"
+            n1:layout_centerVertical="true"
+            n1:layout_marginLeft="10.0dip"
+            n1:src="@drawable/ic_back_white" />
+
+        <TextView
+            n1:id="@+id/text_title_anggota"
+            n1:layout_width="wrap_content"
+            n1:layout_height="fill_parent"
+            n1:layout_marginLeft="25.0dip"
+            n1:layout_toRightOf="@+id/back"
+            n1:gravity="center_vertical"
+            n1:text="Edit Visi dan Misi"
+            n1:textColor="@color/putih"
+            n1:textSize="17.0sp"
+            n1:textStyle="bold" />
+
+        <ImageView
+            n1:layout_width="@dimen/width70"
+            n1:layout_height="wrap_content"
+            n1:layout_alignParentRight="true"
+            n1:layout_centerVertical="true"
+            n1:layout_marginBottom="@dimen/margin_standard"
+            n1:layout_marginRight="@dimen/margin_small"
+            n1:layout_marginTop="@dimen/margin_standard"
+            n1:src="@drawable/mpm" />
+    </RelativeLayout>
+    <ScrollView
+        n1:layout_width="fill_parent"
+        n1:layout_height="fill_parent"
+        n1:layout_below="@+id/customToolbar"
+        n1:background="@color/putihGelap1"
+        n1:padding="@dimen/margin_small">
+
+        <RelativeLayout
+            n1:layout_width="fill_parent"
+            n1:layout_height="fill_parent">
+
+            <RelativeLayout
+                n1:id="@+id/rl_struktur"
+                n1:layout_width="fill_parent"
+                n1:layout_height="fill_parent"
+                n1:background="@drawable/border_rl_green"
+                n1:padding="@dimen/margin_standard">
+
+                <TextView
+                    n1:id="@+id/text_visi"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_centerHorizontal="true"
+                    n1:layout_marginBottom="@dimen/margin_standard"
+                    n1:text="Visi"
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/title_font" />
+
+                <EditText
+                    n1:id="@+id/et_visi"
+                    n1:layout_width="match_parent"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/text_visi"
+                    n1:layout_toRightOf="@+id/text_dpo"
+                    n1:padding="@dimen/margin_standard"
+                    n1:background="@drawable/border_et_putih"
+                    n1:textSize="@dimen/text_font"
+                    n1:textColor="@color/hitamGray"
+                    n1:inputType="textMultiLine"
+                    n1:lines="5"
+                    n1:minLines="5"
+                    n1:maxLines="15"
+                    />
+                <TextView
+                    n1:id="@+id/text_misi"
+                    n1:layout_below="@+id/et_visi"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_centerHorizontal="true"
+                    n1:layout_marginTop="@dimen/margin_big"
+                    n1:layout_marginBottom="@dimen/margin_standard"
+                    n1:text="Misi"
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/title_font" />
+
+                <EditText
+                    n1:id="@+id/et_misi"
+                    n1:layout_width="match_parent"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/text_misi"
+                    n1:layout_toRightOf="@+id/text_bpo"
+                    n1:padding="@dimen/margin_standard"
+                    n1:background="@drawable/border_et_putih"
+                    n1:textSize="@dimen/text_font"
+                    n1:textColor="@color/hitamGray"
+                    n1:inputType="textMultiLine"
+                    n1:lines="5"
+                    n1:minLines="5"
+                    n1:maxLines="15"
+                    />
+            </RelativeLayout>
+
+            <Button
+                n1:id="@+id/btn_simpan"
+                n1:layout_width="fill_parent"
+                n1:layout_height="50.0dip"
+                n1:layout_below="@+id/rl_struktur"
+                n1:layout_marginTop="@dimen/margin_standard"
+                n1:background="@drawable/border_rl_green"
+                n1:text="SIMPAN"
+                n1:textColor="@color/putih"
+                n1:textSize="@dimen/text_font" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

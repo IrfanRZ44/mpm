@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent"
+    n1:background="@color/putihGelap1">
+
+    <RelativeLayout
+        n1:id="@+id/customToolbar"
+        n1:layout_width="fill_parent"
+        n1:layout_height="55.0dip"
+        n1:background="@color/green1">
+
+        <ImageView
+            n1:id="@+id/back"
+            n1:layout_width="25.0dip"
+            n1:layout_height="30.0dip"
+            n1:layout_centerVertical="true"
+            n1:layout_marginLeft="10.0dip"
+            n1:src="@drawable/ic_back_white" />
+
+        <TextView
+            n1:id="@+id/text_title_anggota"
+            n1:layout_width="wrap_content"
+            n1:layout_height="fill_parent"
+            n1:layout_marginLeft="25.0dip"
+            n1:layout_toRightOf="@+id/back"
+            n1:gravity="center_vertical"
+            n1:text="Profile"
+            n1:textColor="@color/putih"
+            n1:textSize="17.0sp"
+            n1:textStyle="bold" />
+
+        <ImageView
+            n1:layout_width="@dimen/width70"
+            n1:layout_height="wrap_content"
+            n1:layout_alignParentRight="true"
+            n1:layout_centerVertical="true"
+            n1:layout_marginBottom="@dimen/margin_standard"
+            n1:layout_marginRight="@dimen/margin_small"
+            n1:layout_marginTop="@dimen/margin_standard"
+            n1:src="@drawable/mpm" />
+    </RelativeLayout>
+
+    <ImageView
+        n1:layout_width="fill_parent"
+        n1:layout_height="200.0dip"
+        n1:layout_below="@+id/customToolbar"
+        n1:scaleType="fitXY"
+        n1:src="@drawable/bg_masjid" />
+
+    <ScrollView
+        n1:id="@+id/sc_profile"
+        n1:layout_width="fill_parent"
+        n1:layout_height="wrap_content"
+        n1:layout_below="@+id/customToolbar"
+        n1:layout_marginTop="170.0dip"
+        n1:padding="@dimen/margin_small">
+
+        <RelativeLayout
+            n1:layout_width="fill_parent"
+            n1:layout_height="fill_parent"
+            n1:background="@drawable/border_rl_white"
+            n1:padding="@dimen/margin_standard">
+
+            <TextView
+                n1:id="@+id/text_nama"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_marginBottom="@dimen/margin_standard"
+                n1:layout_marginTop="55.0dip"
+                n1:text="Nama        : "
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <TextView
+                n1:id="@+id/text_user"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/et_nama"
+                n1:layout_marginTop="@dimen/margin_small"
+                n1:text="Username : "
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <TextView
+                n1:id="@+id/text_pass"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/et_user"
+                n1:layout_marginTop="@dimen/margin_small"
+                n1:text="Password : "
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <TextView
+                n1:id="@+id/text_telp"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/et_pass"
+                n1:layout_marginTop="@dimen/margin_small"
+                n1:text="Telepon     : "
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <TextView
+                n1:id="@+id/text_umur"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/et_telp"
+                n1:layout_marginTop="@dimen/margin_small"
+                n1:text="Umur          : "
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <TextView
+                n1:id="@+id/text_alamat"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/et_umur"
+                n1:layout_marginTop="@dimen/margin_small"
+                n1:text="Alamat     : "
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <TextView
+                n1:id="@+id/text_jk"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/et_alamat"
+                n1:layout_marginTop="25.0dip"
+                n1:text="Jenis Kelamin : "
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <EditText
+                n1:id="@+id/et_nama"
+                n1:layout_width="fill_parent"
+                n1:layout_height="35.0dip"
+                n1:layout_marginBottom="@dimen/margin_small"
+                n1:layout_marginTop="45.0dip"
+                n1:layout_toRightOf="@+id/text_nama"
+                n1:background="@drawable/border_et_transparent_gray"
+                n1:maxLines="1"
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <EditText
+                n1:id="@+id/et_user"
+                n1:layout_width="fill_parent"
+                n1:layout_height="35.0dip"
+                n1:layout_below="@+id/et_nama"
+                n1:layout_marginBottom="@dimen/margin_small"
+                n1:layout_toRightOf="@+id/text_user"
+                n1:background="@drawable/border_et_transparent_gray"
+                n1:editable="false"
+                n1:maxLines="1"
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <EditText
+                n1:id="@+id/et_pass"
+                n1:layout_width="fill_parent"
+                n1:layout_height="35.0dip"
+                n1:layout_below="@+id/et_user"
+                n1:layout_marginBottom="@dimen/margin_small"
+                n1:layout_toRightOf="@+id/text_pass"
+                n1:background="@drawable/border_et_transparent_gray"
+                n1:inputType="textPassword"
+                n1:maxLines="1"
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <CheckBox
+                n1:id="@+id/cb_pass"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_alignParentRight="true"
+                n1:layout_below="@+id/et_user"
+                n1:layout_marginTop="3.0dip" />
+
+            <EditText
+                n1:id="@+id/et_telp"
+                n1:layout_width="fill_parent"
+                n1:layout_height="35.0dip"
+                n1:layout_below="@+id/et_pass"
+                n1:layout_marginBottom="@dimen/margin_small"
+                n1:layout_toRightOf="@+id/text_pass"
+                n1:background="@drawable/border_et_transparent_gray"
+                n1:maxLines="1"
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <EditText
+                n1:id="@+id/et_umur"
+                n1:layout_width="fill_parent"
+                n1:layout_height="35.0dip"
+                n1:layout_below="@+id/et_telp"
+                n1:layout_marginBottom="@dimen/margin_small"
+                n1:layout_toRightOf="@+id/text_pass"
+                n1:background="@drawable/border_et_transparent_gray"
+                n1:maxLines="1"
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <EditText
+                n1:id="@+id/et_alamat"
+                n1:layout_width="fill_parent"
+                n1:layout_height="35.0dip"
+                n1:layout_below="@+id/et_umur"
+                n1:layout_marginBottom="@dimen/margin_small"
+                n1:layout_toRightOf="@+id/text_pass"
+                n1:background="@drawable/border_et_transparent_gray"
+                n1:maxLines="1"
+                n1:textColor="@color/hitam"
+                n1:textSize="@dimen/title_font" />
+
+            <Spinner
+                n1:id="@+id/spinner_jk"
+                n1:layout_width="fill_parent"
+                n1:layout_height="50.0dip"
+                n1:layout_below="@+id/et_alamat"
+                n1:layout_marginTop="@dimen/margin_standard"
+                n1:layout_toRightOf="@+id/text_jk"
+                n1:background="@drawable/spinner_green"
+                n1:popupBackground="@drawable/border_spinner_green" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        n1:id="@+id/btn_simpan"
+        n1:layout_width="fill_parent"
+        n1:layout_height="wrap_content"
+        n1:layout_below="@+id/sc_profile"
+        n1:layout_margin="@dimen/margin_standard"
+        n1:background="@drawable/border_btn_green_white"
+        n1:text="Simpan Perubahan"
+        n1:textColor="@color/green1"
+        n1:textSize="@dimen/title_font"
+        n1:visibility="gone" />
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:n2="http://schemas.android.com/apk/res-auto"
+        n1:id="@+id/img_user"
+        n1:layout_width="100.0dip"
+        n1:layout_height="100.0dip"
+        n1:layout_below="@+id/customToolbar"
+        n1:layout_centerHorizontal="true"
+        n1:layout_marginTop="120.0dip"
+        n2:civ_circle_background_color="@color/putih" />
+</RelativeLayout>

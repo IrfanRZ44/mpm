@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent"
+    n1:background="@color/green1">
+
+    <com.wang.avi.AVLoadingIndicatorView xmlns:n2="http://schemas.android.com/apk/res-auto"
+        n1:id="@+id/avi"
+        style="@style/AVLoadingIndicatorView"
+        n1:layout_width="wrap_content"
+        n1:layout_height="wrap_content"
+        n1:layout_centerInParent="true"
+        n1:visibility="visible"
+        n2:indicatorColor="@color/putihGelap1"
+        n2:indicatorName="LineScaleIndicator" />
+
+    <TextView
+        n1:layout_width="wrap_content"
+        n1:layout_height="wrap_content"
+        n1:layout_below="@+id/avi"
+        n1:layout_centerHorizontal="true"
+        n1:layout_marginTop="@dimen/margin_standard"
+        n1:text="@string/splash"
+        n1:textColor="@color/putih"
+        n1:textSize="@dimen/text_font"
+        n1:id="@+id/text"
+        />
+</RelativeLayout>

@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "766357341403",
+    "firebase_url": "https://pecintamasjid-1b083.firebaseio.com",
+    "project_id": "pecintamasjid-1b083",
+    "storage_bucket": "pecintamasjid-1b083.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766357341403:android:d107633d50f3f996",
+        "android_client_info": {
+          "package_name": "com.exomatik.mpm.mpm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766357341403-930nsg3llh3n825rk2fepl9ui0a2aj8k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.exomatik.mpm.mpm",
+            "certificate_hash": "6d09a41daf8e3ea3540b260ae1f4878b04cd8166"
+          }
+        },
+        {
+          "client_id": "766357341403-j1enkr3njjafgp1mmvapdu40md3a5n10.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6pDFOxnvmOyTlVRPca6zXWJE0j3Fh9bs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766357341403-j1enkr3njjafgp1mmvapdu40md3a5n10.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766357341403:android:1ecd60f0bdf2634a",
+        "android_client_info": {
+          "package_name": "com.exomatik.mpm.pecintamasjid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766357341403-0ahspv9mh760hg8bsf2c6v3mk80i4s2g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.exomatik.mpm.pecintamasjid",
+            "certificate_hash": "6d09a41daf8e3ea3540b260ae1f4878b04cd8166"
+          }
+        },
+        {
+          "client_id": "766357341403-j1enkr3njjafgp1mmvapdu40md3a5n10.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6pDFOxnvmOyTlVRPca6zXWJE0j3Fh9bs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766357341403-j1enkr3njjafgp1mmvapdu40md3a5n10.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

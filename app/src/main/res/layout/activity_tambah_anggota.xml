@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent">
+
+    <RelativeLayout
+        n1:layout_width="fill_parent"
+        n1:layout_height="fill_parent"
+        n1:background="@drawable/background">
+
+        <RelativeLayout
+            n1:id="@+id/customToolbar"
+            n1:layout_width="fill_parent"
+            n1:layout_height="55.0dip"
+            n1:background="@color/green1">
+
+            <ImageView
+                n1:id="@+id/back"
+                n1:layout_width="25.0dip"
+                n1:layout_height="30.0dip"
+                n1:layout_centerVertical="true"
+                n1:layout_marginLeft="10.0dip"
+                n1:src="@drawable/ic_back_white" />
+
+            <TextView
+                n1:id="@+id/text_title_anggota"
+                n1:layout_width="wrap_content"
+                n1:layout_height="fill_parent"
+                n1:layout_marginLeft="25.0dip"
+                n1:layout_toRightOf="@+id/back"
+                n1:gravity="center_vertical"
+                n1:text="Tambah"
+                n1:textColor="@color/putih"
+                n1:textSize="17.0sp"
+                n1:textStyle="bold" />
+
+            <ImageView
+                n1:layout_width="@dimen/width70"
+                n1:layout_height="wrap_content"
+                n1:layout_alignParentRight="true"
+                n1:layout_centerVertical="true"
+                n1:layout_marginBottom="@dimen/margin_standard"
+                n1:layout_marginRight="@dimen/margin_small"
+                n1:layout_marginTop="@dimen/margin_standard"
+                n1:src="@drawable/mpm" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            n1:id="@+id/ll2"
+            n1:layout_width="fill_parent"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/customToolbar"
+            n1:layout_centerHorizontal="true"
+            n1:layout_marginLeft="@dimen/margin_small"
+            n1:layout_marginRight="@dimen/margin_small"
+            n1:layout_marginTop="50.0dip"
+            n1:background="@drawable/border_rl_transparent"
+            n1:paddingLeft="@dimen/margin_standard_big"
+            n1:paddingRight="@dimen/margin_standard_big">
+
+            <TextView
+                n1:id="@+id/text_masuk"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_centerHorizontal="true"
+                n1:layout_marginBottom="@dimen/margin_standard"
+                n1:layout_marginTop="55.0dip"
+                n1:text="Tambah Anggota"
+                n1:textColor="@color/putih"
+                n1:textSize="@dimen/title_font" />
+
+            <LinearLayout
+                n1:id="@+id/ln_nama"
+                n1:layout_width="fill_parent"
+                n1:layout_height="40.0dip"
+                n1:layout_below="@+id/text_masuk"
+                n1:background="@drawable/border_et_putih"
+                n1:orientation="horizontal"
+                n1:padding="@dimen/margin_small">
+
+                <ImageView
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:src="@drawable/ic_nama_gray" />
+
+                <EditText
+                    n1:id="@+id/et_nama"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="40.0dip"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:background="@android:color/transparent"
+                    n1:hint="Nama Lengkap"
+                    n1:maxLines="1"
+                    n1:textColorHint="@color/putihGelap2"
+                    n1:textSize="@dimen/text_font" />
+            </LinearLayout>
+
+            <LinearLayout
+                n1:id="@+id/ln_angkatan"
+                n1:layout_width="fill_parent"
+                n1:layout_height="40.0dip"
+                n1:layout_below="@+id/ln_nama"
+                n1:layout_marginTop="@dimen/margin_standard_big"
+                n1:background="@drawable/border_et_putih"
+                n1:orientation="horizontal"
+                n1:padding="@dimen/margin_small">
+
+                <ImageView
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:src="@drawable/ic_angkatan_gray" />
+
+                <EditText
+                    n1:id="@+id/et_angkatan"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="40.0dip"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:background="@android:color/transparent"
+                    n1:hint="Angkatan"
+                    n1:inputType="number"
+                    n1:maxLines="1"
+                    n1:textColorHint="@color/putihGelap2"
+                    n1:textSize="@dimen/text_font" />
+            </LinearLayout>
+
+            <LinearLayout
+                n1:id="@+id/ln_user"
+                n1:layout_width="fill_parent"
+                n1:layout_height="40.0dip"
+                n1:layout_below="@+id/ln_angkatan"
+                n1:layout_marginTop="@dimen/margin_standard_big"
+                n1:background="@drawable/border_et_putih"
+                n1:orientation="horizontal"
+                n1:padding="@dimen/margin_small">
+
+                <ImageView
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:src="@drawable/ic_people_gray" />
+
+                <EditText
+                    n1:id="@+id/et_username"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="40.0dip"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:background="@android:color/transparent"
+                    n1:hint="Username"
+                    n1:maxLines="1"
+                    n1:textColorHint="@color/putihGelap2"
+                    n1:textSize="@dimen/text_font" />
+            </LinearLayout>
+
+            <RelativeLayout
+                n1:id="@+id/ln_pass"
+                n1:layout_width="fill_parent"
+                n1:layout_height="40.0dip"
+                n1:layout_below="@+id/ln_user"
+                n1:layout_marginTop="@dimen/margin_standard_big"
+                n1:background="@drawable/border_et_putih"
+                n1:orientation="horizontal"
+                n1:padding="@dimen/margin_small">
+
+                <ImageView
+                    n1:id="@+id/img_pass"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:src="@drawable/ic_lock_gray" />
+
+                <EditText
+                    n1:id="@+id/et_password"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="40.0dip"
+                    n1:layout_centerVertical="true"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:layout_toRightOf="@+id/img_pass"
+                    n1:background="@android:color/transparent"
+                    n1:hint="Password"
+                    n1:inputType="textPassword"
+                    n1:maxLines="1"
+                    n1:textColorHint="@color/putihGelap2"
+                    n1:textSize="@dimen/text_font" />
+
+                <CheckBox
+                    n1:id="@+id/cb_pass"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_alignParentRight="true"
+                    n1:layout_marginTop="3.0dip" />
+            </RelativeLayout>
+
+            <LinearLayout
+                n1:id="@+id/ln_alamat"
+                n1:layout_width="fill_parent"
+                n1:layout_height="40.0dip"
+                n1:layout_below="@+id/ln_pass"
+                n1:layout_marginTop="@dimen/margin_standard_big"
+                n1:background="@drawable/border_et_putih"
+                n1:orientation="horizontal"
+                n1:padding="@dimen/margin_small">
+
+                <ImageView
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:src="@drawable/ic_location_gray" />
+
+                <EditText
+                    n1:id="@+id/et_alamat"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="40.0dip"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:background="@android:color/transparent"
+                    n1:hint="Alamat"
+                    n1:maxLines="1"
+                    n1:textColorHint="@color/putihGelap2"
+                    n1:textSize="@dimen/text_font" />
+            </LinearLayout>
+
+            <LinearLayout
+                n1:id="@+id/ln_phone"
+                n1:layout_width="fill_parent"
+                n1:layout_height="40.0dip"
+                n1:layout_below="@+id/ln_alamat"
+                n1:layout_marginTop="@dimen/margin_standard_big"
+                n1:background="@drawable/border_et_putih"
+                n1:orientation="horizontal"
+                n1:padding="@dimen/margin_small">
+
+                <ImageView
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:src="@drawable/ic_phone_gray" />
+
+                <EditText
+                    n1:id="@+id/et_phone"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="40.0dip"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:background="@android:color/transparent"
+                    n1:hint="Telepon"
+                    n1:inputType="number"
+                    n1:maxLines="1"
+                    n1:textColorHint="@color/putihGelap2"
+                    n1:textSize="@dimen/text_font" />
+            </LinearLayout>
+
+            <LinearLayout
+                n1:id="@+id/ln_umur"
+                n1:layout_width="fill_parent"
+                n1:layout_height="40.0dip"
+                n1:layout_below="@+id/ln_phone"
+                n1:layout_marginTop="@dimen/margin_standard_big"
+                n1:background="@drawable/border_et_putih"
+                n1:orientation="horizontal"
+                n1:padding="@dimen/margin_small">
+
+                <ImageView
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:src="@drawable/ic_age_gray" />
+
+                <EditText
+                    n1:id="@+id/et_umur"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="40.0dip"
+                    n1:layout_gravity="center_vertical"
+                    n1:layout_marginLeft="@dimen/margin_small"
+                    n1:background="@android:color/transparent"
+                    n1:hint="Umur"
+                    n1:inputType="number"
+                    n1:maxLines="1"
+                    n1:textColorHint="@color/putihGelap2"
+                    n1:textSize="@dimen/text_font" />
+            </LinearLayout>
+
+            <LinearLayout
+                n1:id="@+id/ln_jk"
+                n1:layout_width="fill_parent"
+                n1:layout_height="wrap_content"
+                n1:layout_below="@+id/ln_umur"
+                n1:layout_marginTop="@dimen/margin_standard_big"
+                n1:orientation="horizontal">
+
+                <TextView
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_gravity="center_vertical"
+                    n1:text="Jenis Kelamin  : "
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/title_font" />
+
+                <RadioGroup
+                    n1:id="@+id/rg_jk"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="wrap_content"
+                    n1:orientation="vertical">
+
+                    <RadioButton
+                        n1:id="@+id/rb_laki"
+                        n1:layout_width="wrap_content"
+                        n1:layout_height="wrap_content"
+                        n1:text="Laki-Laki"
+                        n1:textColor="@color/putih" />
+
+                    <RadioButton
+                        n1:id="@+id/rb_perempuan"
+                        n1:layout_width="wrap_content"
+                        n1:layout_height="wrap_content"
+                        n1:text="Perempuan"
+                        n1:textColor="@color/putih" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <RelativeLayout
+                n1:id="@+id/rl_daftar"
+                n1:layout_width="fill_parent"
+                n1:layout_height="40.0dip"
+                n1:layout_below="@+id/ln_jk"
+                n1:layout_marginBottom="@dimen/margin_standard_big"
+                n1:layout_marginTop="@dimen/margin_standard_big"
+                n1:background="@drawable/border_btn_green">
+
+                <TextView
+                    n1:id="@+id/text"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_centerInParent="true"
+                    n1:text="Daftar"
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/title_font" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <ImageView
+            n1:layout_width="75.0dip"
+            n1:layout_height="75.0dip"
+            n1:layout_below="@+id/customToolbar"
+            n1:layout_centerHorizontal="true"
+            n1:layout_marginTop="20.0dip"
+            n1:src="@drawable/people2" />
+    </RelativeLayout>
+</ScrollView>

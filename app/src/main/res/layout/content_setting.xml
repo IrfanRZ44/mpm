@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent"
+    n1:background="@drawable/background">
+
+    <RelativeLayout
+        n1:id="@+id/ll2"
+        n1:layout_width="fill_parent"
+        n1:layout_height="300.0dip"
+        n1:layout_centerHorizontal="true"
+        n1:layout_marginLeft="50.0dip"
+        n1:layout_marginRight="50.0dip"
+        n1:layout_marginTop="75.0dip"
+        n1:background="@drawable/back4">
+
+        <TextView
+            n1:id="@+id/text_masuk"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_centerHorizontal="true"
+            n1:layout_marginBottom="@dimen/margin_standard"
+            n1:layout_marginTop="55.0dip"
+            n1:text="Masuk"
+            n1:textColor="@color/hitamGray"
+            n1:textSize="@dimen/title_font" />
+
+        <LinearLayout
+            n1:id="@+id/ln_user"
+            n1:layout_width="fill_parent"
+            n1:layout_height="40.0dip"
+            n1:layout_below="@+id/text_masuk"
+            n1:layout_margin="@dimen/margin_standard_big"
+            n1:background="@drawable/border_et_putih"
+            n1:orientation="horizontal"
+            n1:padding="@dimen/margin_small">
+
+            <ImageView
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_gravity="center_vertical"
+                n1:layout_marginLeft="@dimen/margin_small"
+                n1:src="@drawable/ic_people_gray" />
+
+            <EditText
+                n1:id="@+id/et_username"
+                n1:layout_width="fill_parent"
+                n1:layout_height="40.0dip"
+                n1:layout_gravity="center_vertical"
+                n1:layout_marginLeft="@dimen/margin_small"
+                n1:background="@android:color/transparent"
+                n1:hint="Username"
+                n1:maxLines="1"
+                n1:textColorHint="@color/putihGelap2"
+                n1:textSize="@dimen/text_font" />
+        </LinearLayout>
+
+        <RelativeLayout
+            n1:id="@+id/ln_pass"
+            n1:layout_width="fill_parent"
+            n1:layout_height="40.0dip"
+            n1:layout_below="@+id/ln_user"
+            n1:layout_marginLeft="@dimen/margin_standard_big"
+            n1:layout_marginRight="@dimen/margin_standard_big"
+            n1:background="@drawable/border_et_putih"
+            n1:orientation="horizontal"
+            n1:padding="@dimen/margin_small">
+
+            <ImageView
+                n1:id="@+id/img_pass"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_gravity="center_vertical"
+                n1:layout_marginLeft="@dimen/margin_small"
+                n1:src="@drawable/ic_lock_gray" />
+
+            <EditText
+                n1:id="@+id/et_password"
+                n1:layout_width="fill_parent"
+                n1:layout_height="40.0dip"
+                n1:layout_centerVertical="true"
+                n1:layout_marginLeft="@dimen/margin_small"
+                n1:layout_toRightOf="@+id/img_pass"
+                n1:background="@android:color/transparent"
+                n1:hint="Password"
+                n1:inputType="textPassword"
+                n1:maxLines="1"
+                n1:textColorHint="@color/putihGelap2"
+                n1:textSize="@dimen/text_font" />
+
+            <CheckBox
+                n1:id="@+id/cb_pass"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_alignParentRight="true"
+                n1:layout_marginTop="3.0dip" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            n1:id="@+id/rl_login"
+            n1:layout_width="fill_parent"
+            n1:layout_height="40.0dip"
+            n1:layout_alignParentBottom="true"
+            n1:layout_marginBottom="30.0dip"
+            n1:layout_marginLeft="@dimen/margin_standard_big"
+            n1:layout_marginRight="@dimen/margin_standard_big"
+            n1:background="@drawable/border_btn_green">
+
+            <TextView
+                n1:id="@+id/text"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_centerInParent="true"
+                n1:text="Login"
+                n1:textColor="@color/putih"
+                n1:textSize="@dimen/title_font" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        n1:layout_width="75.0dip"
+        n1:layout_height="75.0dip"
+        n1:layout_centerHorizontal="true"
+        n1:layout_marginTop="45.0dip"
+        n1:src="@drawable/people2" />
+</RelativeLayout>

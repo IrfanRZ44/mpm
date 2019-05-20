@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent">
+
+    <RelativeLayout
+        n1:id="@+id/customToolbar"
+        n1:layout_width="fill_parent"
+        n1:layout_height="55.0dip"
+        n1:background="@color/green1">
+
+        <ImageView
+            n1:id="@+id/back"
+            n1:layout_width="25.0dip"
+            n1:layout_height="30.0dip"
+            n1:layout_centerVertical="true"
+            n1:layout_marginLeft="10.0dip"
+            n1:src="@drawable/ic_back_white" />
+
+        <TextView
+            n1:id="@+id/text_title_anggota"
+            n1:layout_width="wrap_content"
+            n1:layout_height="fill_parent"
+            n1:layout_marginLeft="25.0dip"
+            n1:layout_toRightOf="@+id/back"
+            n1:gravity="center_vertical"
+            n1:text="Edit Struktur"
+            n1:textColor="@color/putih"
+            n1:textSize="17.0sp"
+            n1:textStyle="bold" />
+
+        <ImageView
+            n1:layout_width="@dimen/width70"
+            n1:layout_height="wrap_content"
+            n1:layout_alignParentRight="true"
+            n1:layout_centerVertical="true"
+            n1:layout_marginBottom="@dimen/margin_standard"
+            n1:layout_marginRight="@dimen/margin_small"
+            n1:layout_marginTop="@dimen/margin_standard"
+            n1:src="@drawable/mpm" />
+    </RelativeLayout>
+
+    <ScrollView
+        n1:layout_width="fill_parent"
+        n1:layout_height="fill_parent"
+        n1:layout_below="@+id/customToolbar"
+        n1:background="@color/putihGelap1"
+        n1:padding="@dimen/margin_small">
+
+        <RelativeLayout
+            n1:layout_width="fill_parent"
+            n1:layout_height="fill_parent">
+
+            <RelativeLayout
+                n1:id="@+id/rl_struktur"
+                n1:layout_width="fill_parent"
+                n1:layout_height="fill_parent"
+                n1:background="@drawable/border_rl_green"
+                n1:padding="@dimen/margin_standard">
+
+                <TextView
+                    n1:id="@+id/text_title"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_centerHorizontal="true"
+                    n1:layout_marginBottom="@dimen/margin_standard"
+                    n1:text="Struktur Organisasi"
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/title_font" />
+
+                <TextView
+                    n1:id="@+id/text_dpo"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/text_title"
+                    n1:layout_marginTop="@dimen/margin_small"
+                    n1:text="Ketua DPO     : "
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/text_font" />
+
+                <TextView
+                    n1:id="@+id/text_bpo"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/text_dpo"
+                    n1:layout_marginTop="@dimen/margin_big"
+                    n1:text="Ketua BPO     : "
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/text_font" />
+
+                <TextView
+                    n1:id="@+id/text_sekertaris"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/text_bpo"
+                    n1:layout_marginTop="@dimen/margin_big"
+                    n1:text="Sekertaris      : "
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/text_font" />
+
+                <TextView
+                    n1:id="@+id/text_bendahara"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/text_sekertaris"
+                    n1:layout_marginTop="@dimen/margin_big"
+                    n1:text="Bendahara     : "
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/text_font" />
+
+                <TextView
+                    n1:id="@+id/text_humas"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/text_bendahara"
+                    n1:layout_marginTop="@dimen/margin_big"
+                    n1:text="Humas           : "
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/text_font" />
+                <TextView
+                    n1:id="@+id/text_pubdok"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/text_humas"
+                    n1:layout_marginTop="@dimen/margin_big"
+                    n1:text="Pubdok           : "
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/text_font" />
+                <TextView
+                    n1:id="@+id/text_minat"
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_below="@+id/text_pubdok"
+                    n1:layout_marginTop="@dimen/margin_big"
+                    n1:text="Minat               : "
+                    n1:textColor="@color/putih"
+                    n1:textSize="@dimen/text_font" />
+
+                <EditText
+                    n1:id="@+id/spinner_dpo"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="30.0dip"
+                    n1:layout_below="@+id/text_title"
+                    n1:layout_toRightOf="@+id/text_dpo"
+                    n1:background="@drawable/border_et_putih"
+                    n1:textSize="@dimen/text_font"
+                    n1:textColor="@color/hitamGray"
+                    n1:inputType="textPersonName"
+                    n1:padding="@dimen/margin_small"
+                    />
+
+                <EditText
+                    n1:id="@+id/spinner_bpo"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="30.0dip"
+                    n1:layout_below="@+id/text_dpo"
+                    n1:layout_marginTop="@dimen/margin_standard_big"
+                    n1:layout_toRightOf="@+id/text_bpo"
+                    n1:background="@drawable/border_et_putih"
+                    n1:textSize="@dimen/text_font"
+                    n1:textColor="@color/hitamGray"
+                    n1:inputType="textPersonName"
+                    n1:padding="@dimen/margin_small"
+                    />
+
+                <EditText
+                    n1:id="@+id/spinner_sekertaris"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="30.0dip"
+                    n1:layout_below="@+id/text_bpo"
+                    n1:layout_marginTop="@dimen/margin_standard_big"
+                    n1:layout_toRightOf="@+id/text_sekertaris"
+                    n1:background="@drawable/border_et_putih"
+                    n1:textSize="@dimen/text_font"
+                    n1:textColor="@color/hitamGray"
+                    n1:inputType="textPersonName"
+                    n1:padding="@dimen/margin_small"
+                    />
+
+                <EditText
+                    n1:id="@+id/spinner_bendahara"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="30.0dip"
+                    n1:layout_below="@+id/text_sekertaris"
+                    n1:layout_marginTop="@dimen/margin_standard_big"
+                    n1:layout_toRightOf="@+id/text_bendahara"
+                    n1:background="@drawable/border_et_putih"
+                    n1:textSize="@dimen/text_font"
+                    n1:textColor="@color/hitamGray"
+                    n1:inputType="textPersonName"
+                    n1:padding="@dimen/margin_small"
+                    />
+
+                <EditText
+                    n1:id="@+id/spinner_humas"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="30.0dip"
+                    n1:layout_below="@+id/text_bendahara"
+                    n1:layout_marginTop="@dimen/margin_standard_big"
+                    n1:layout_toRightOf="@+id/text_humas"
+                    n1:background="@drawable/border_et_putih"
+                    n1:textSize="@dimen/text_font"
+                    n1:textColor="@color/hitamGray"
+                    n1:maxLines="3"
+                    n1:inputType="textMultiLine"
+                    n1:padding="@dimen/margin_small"
+                    />
+                <EditText
+                    n1:id="@+id/spinner_pubdok"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="30.0dip"
+                    n1:layout_below="@+id/text_humas"
+                    n1:layout_marginTop="@dimen/margin_standard_big"
+                    n1:layout_toRightOf="@+id/text_pubdok"
+                    n1:background="@drawable/border_et_putih"
+                    n1:textSize="@dimen/text_font"
+                    n1:textColor="@color/hitamGray"
+                    n1:maxLines="3"
+                    n1:inputType="textMultiLine"
+                    n1:padding="@dimen/margin_small"
+                    />
+                <EditText
+                    n1:id="@+id/spinner_minat"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="30.0dip"
+                    n1:layout_below="@+id/text_pubdok"
+                    n1:layout_marginTop="@dimen/margin_standard_big"
+                    n1:layout_toRightOf="@+id/text_minat"
+                    n1:background="@drawable/border_et_putih"
+                    n1:textSize="@dimen/text_font"
+                    n1:textColor="@color/hitamGray"
+                    n1:maxLines="3"
+                    n1:inputType="textMultiLine"
+                    n1:padding="@dimen/margin_small"
+                    />
+            </RelativeLayout>
+
+            <Button
+                n1:id="@+id/btn_simpan"
+                n1:layout_width="fill_parent"
+                n1:layout_height="50.0dip"
+                n1:layout_below="@+id/rl_struktur"
+                n1:layout_marginTop="@dimen/margin_standard"
+                n1:background="@drawable/border_rl_green"
+                n1:text="SIMPAN"
+                n1:textColor="@color/putih"
+                n1:textSize="@dimen/text_font" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

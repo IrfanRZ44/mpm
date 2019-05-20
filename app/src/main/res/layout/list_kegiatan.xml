@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:layout_width="fill_parent"
+    n1:layout_height="100.0dip"
+    n1:layout_gravity="center"
+    n1:layout_marginTop="@dimen/margin_standard"
+    n1:background="@drawable/border_rl_green"
+    n1:padding="10.0dip"
+    n1:id="@+id/rl_item_kegiatan"
+    >
+
+    <ImageView
+        n1:id="@+id/listImage"
+        n1:layout_width="100.0dip"
+        n1:layout_height="fill_parent"
+        n1:layout_alignParentLeft="true"
+        n1:scaleType="centerInside" />
+
+    <TextView
+        n1:id="@+id/text_title"
+        n1:layout_width="wrap_content"
+        n1:layout_height="wrap_content"
+        n1:layout_marginLeft="@dimen/margin_standard"
+        n1:layout_toRightOf="@+id/listImage"
+        n1:singleLine="true"
+        n1:textColor="@color/putih"
+        n1:textSize="@dimen/title_font"
+        n1:textStyle="bold" />
+
+    <TextView
+        n1:id="@+id/text_tanggal"
+        n1:layout_width="wrap_content"
+        n1:layout_height="wrap_content"
+        n1:layout_below="@+id/text_title"
+        n1:layout_marginLeft="@dimen/margin_standard"
+        n1:layout_toRightOf="@+id/listImage"
+        n1:singleLine="true"
+        n1:textColor="@color/putihGelap1"
+        n1:textSize="12.0sp" />
+
+    <TextView
+        n1:id="@+id/text_lokasi"
+        n1:layout_width="fill_parent"
+        n1:layout_height="wrap_content"
+        n1:layout_alignParentBottom="true"
+        n1:layout_marginLeft="@dimen/margin_standard"
+        n1:layout_marginRight="@dimen/margin_standard"
+        n1:layout_toRightOf="@+id/text_tanggal"
+        n1:gravity="end"
+        n1:singleLine="true"
+        n1:textColor="@color/putih"
+        n1:textSize="@dimen/text_font" />
+</RelativeLayout>
