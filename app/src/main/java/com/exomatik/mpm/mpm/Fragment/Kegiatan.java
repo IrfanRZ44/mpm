@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.exomatik.mpm.mpm.Activity.DetailKegiatan;
@@ -39,6 +40,7 @@ public class Kegiatan extends Fragment implements ItemClickSupport.OnItemClickLi
     private UserPreference userPreference;
     private ShimmerLayout shimmerLoad;
     private View view;
+    private TextView textNothing;
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
@@ -47,6 +49,7 @@ public class Kegiatan extends Fragment implements ItemClickSupport.OnItemClickLi
         this.rcKegiatan = ((RecyclerView) this.view.findViewById(R.id.rc_quran));
         this.btnAddKegiatan = ((CircleImageView) this.view.findViewById(R.id.btn_tambah_quran));
         this.shimmerLoad = (ShimmerLayout) this.view.findViewById(R.id.shimmer_load);
+        this.textNothing = (TextView) this.view.findViewById(R.id.text_nothing);
 
         shimmerLoad.startShimmerAnimation();
         this.userPreference = new UserPreference(getActivity());
@@ -92,6 +95,11 @@ public class Kegiatan extends Fragment implements ItemClickSupport.OnItemClickLi
                 Kegiatan.this.rcKegiatan.setLayoutManager(localLinearLayoutManager);
                 Kegiatan.this.rcKegiatan.setNestedScrollingEnabled(false);
                 Kegiatan.this.rcKegiatan.setAdapter(localRecyclerKegiatan);
+            }
+            else{
+                shimmerLoad.setVisibility(View.GONE);
+                shimmerLoad.stopShimmerAnimation();
+                textNothing.setVisibility(View.VISIBLE);
             }
         }
     };

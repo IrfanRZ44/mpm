@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.exomatik.mpm.mpm.Activity.BuatPembelajaran;
@@ -43,6 +44,7 @@ public class Belajar extends Fragment {
     private View view;
     RecyclerView.LayoutManager layoutManager;
     private ShimmerLayout shimmerLoad;
+    private TextView textNothing;
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
@@ -51,6 +53,7 @@ public class Belajar extends Fragment {
         rcBelajar = ((RecyclerView) this.view.findViewById(R.id.rc_belajar));
         btnAddBelajar = ((CircleImageView) this.view.findViewById(R.id.btn_tambah_belajar));
         shimmerLoad = (ShimmerLayout) view.findViewById(R.id.shimmer_load);
+        textNothing = (TextView) view.findViewById(R.id.text_nothing);
 
         shimmerLoad.startShimmerAnimation();
         userPreference = new UserPreference(getActivity());
@@ -83,7 +86,6 @@ public class Belajar extends Fragment {
                 while (localIterator.hasNext()) {
                     ModelBelajar localModelBelajar = (ModelBelajar) ((DataSnapshot) localIterator.next()).getValue(ModelBelajar.class);
                     listBelajar.add(new ModelBelajar(localModelBelajar.getNama(), localModelBelajar.getIsi(), localModelBelajar.getDesc(), true));
-
                 }
 
                 rcBelajar.setVisibility(View.VISIBLE);
@@ -91,6 +93,11 @@ public class Belajar extends Fragment {
                 shimmerLoad.stopShimmerAnimation();
                 AdapterBelajar adapter = new AdapterBelajar(listBelajar, getActivity());
                 rcBelajar.setAdapter(adapter);
+            }
+            else {
+                textNothing.setVisibility(View.VISIBLE);
+                shimmerLoad.setVisibility(View.GONE);
+                shimmerLoad.stopShimmerAnimation();
             }
         }
     };

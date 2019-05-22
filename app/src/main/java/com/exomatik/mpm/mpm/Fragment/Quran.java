@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.exomatik.mpm.mpm.Activity.DetailQuran;
@@ -40,6 +41,7 @@ public class Quran extends Fragment implements OnItemClickListener {
     private UserPreference userPreference;
     private View view;
     private ShimmerLayout shimmerLayout, shimmerLayout2;
+    private TextView textNothing;
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
@@ -49,6 +51,7 @@ public class Quran extends Fragment implements OnItemClickListener {
         this.btnAddQuran = ((CircleImageView) this.view.findViewById(R.id.btn_tambah_quran));
         shimmerLayout = (ShimmerLayout) view.findViewById(R.id.shimmer_load);
         shimmerLayout2 = (ShimmerLayout) view.findViewById(R.id.shimmer_load2);
+        textNothing = (TextView) view.findViewById(R.id.text_nothing);
 
         shimmerLayout.startShimmerAnimation();
         shimmerLayout2.startShimmerAnimation();
@@ -106,6 +109,13 @@ public class Quran extends Fragment implements OnItemClickListener {
                 Quran.this.rcQuran.setLayoutManager(localLinearLayoutManager);
                 Quran.this.rcQuran.setNestedScrollingEnabled(false);
                 Quran.this.rcQuran.setAdapter(localRcQuran);
+            }
+            else {
+                textNothing.setVisibility(View.VISIBLE);
+                shimmerLayout2.setVisibility(View.GONE);
+                shimmerLayout.setVisibility(View.GONE);
+                shimmerLayout.stopShimmerAnimation();
+                shimmerLayout2.stopShimmerAnimation();
             }
         }
     };

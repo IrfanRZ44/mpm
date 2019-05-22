@@ -65,9 +65,21 @@ public class SplashScreen extends AppCompatActivity {
               }
             }, 2000L);
           }
-          else {
+          else if (localDataString.equals("maintenance")){
             loadingIndicatorView.setVisibility(View.GONE);
             text.setText("Mohon maaf, aplikasi sedang maintenance");
+          }
+          else if (localDataString.equals("service")){
+            text.setText("Mohon maaf, aplikasi akan maintenance segera");
+            new Handler().postDelayed(new Runnable()
+            {
+              public void run()
+              {
+                Intent localIntent = new Intent(SplashScreen.this, MainActivity.class);
+                SplashScreen.this.startActivity(localIntent);
+                SplashScreen.this.finish();
+              }
+            }, 2000L);
           }
         }
       }

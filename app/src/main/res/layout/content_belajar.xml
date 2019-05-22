@@ -45,6 +45,18 @@
                 android:textColor="@color/hitamGray"
                 android:textSize="@dimen/title_font"
                 android:textStyle="bold" />
+            <TextView
+                android:id="@+id/text_nothing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin_standard"
+                android:text="Mohon maaf, saat ini belum ada data"
+                android:textColor="@color/hitamGray"
+                android:textSize="@dimen/text_font"
+                android:layout_below="@+id/text_title"
+                android:visibility="gone"
+                />
             <io.supercharge.shimmerlayout.ShimmerLayout
                 android:id="@+id/shimmer_load"
                 android:layout_width="wrap_content"
