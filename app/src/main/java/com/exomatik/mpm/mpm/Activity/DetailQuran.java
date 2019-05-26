@@ -2,8 +2,10 @@ package com.exomatik.mpm.mpm.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,21 +17,24 @@ import com.exomatik.mpm.mpm.CustomDialog.DialogTambahQuran;
 import com.exomatik.mpm.mpm.Featured.UserPreference;
 import com.exomatik.mpm.mpm.Model.ModelQuran;
 import com.exomatik.mpm.mpm.R;
+import com.google.firebase.storage.StorageReference;
 
 import es.voghdev.pdfviewpager.library.RemotePDFViewPager;
 import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter;
 import es.voghdev.pdfviewpager.library.remote.DownloadFile;
 import es.voghdev.pdfviewpager.library.util.FileUtil;
+import is.arontibo.library.ElasticDownloadView;
 
 public class DetailQuran extends AppCompatActivity implements DownloadFile.Listener {
     public static ModelQuran dataQuran;
     private LinearLayout root;
     private RemotePDFViewPager remotePDFViewPager;
-    private TextView textTitle;
-    private ImageView btnBack, btnEdit;
+    private TextView textProgress, textTitle;
+    private ImageView btnBack, btnEdit, btnDownload;
     private PDFPagerAdapter adapter;
     private RelativeLayout rlCustoomToolbar;
     private UserPreference userPreference;
+    private ElasticDownloadView elasticDownloadView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,8 +45,13 @@ public class DetailQuran extends AppCompatActivity implements DownloadFile.Liste
         root = (LinearLayout) findViewById(R.id.remote_pdf_root);
         btnBack = (ImageView) findViewById(R.id.back);
         btnEdit = (ImageView) findViewById(R.id.img_edit);
+        btnDownload = (ImageView) findViewById(R.id.img_download);
+        textProgress = (TextView) findViewById(R.id.text_progress);
         textTitle = (TextView) findViewById(R.id.text_title_bar);
         rlCustoomToolbar = (RelativeLayout) findViewById(R.id.customToolbar);
+        elasticDownloadView = (ElasticDownloadView) findViewById(R.id.elastic_download_view);
+
+        elasticDownloadView.startIntro();
 
         userPreference = new UserPreference(this);
 
@@ -66,6 +76,16 @@ public class DetailQuran extends AppCompatActivity implements DownloadFile.Liste
             public void onClick(View v) {
                 startActivity(new Intent(DetailQuran.this, MainActivity.class));
                 finish();
+            }
+        });
+
+        btnDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(dataQuran.getFile()));
+                startActivity(intent);
             }
         });
 
@@ -110,6 +130,15 @@ public class DetailQuran extends AppCompatActivity implements DownloadFile.Liste
 
     @Override
     public void onProgressUpdate(int progress, int total) {
+        double proses = (100.0 * progress)/total;
+        elasticDownloadView.setProgress((int)proses);
+        String progressText = progress/1024+"KB/"+total/1024+"KB";
+        textProgress.setText(progressText);
+    }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(DetailQuran.this, MainActivity.class));
+        finish();
     }
 }

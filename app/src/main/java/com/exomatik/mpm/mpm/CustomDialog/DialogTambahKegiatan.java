@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
@@ -99,13 +101,9 @@ public class DialogTambahKegiatan extends DialogFragment {
 
         this.mStorageRef = FirebaseStorage.getInstance().getReference();
         this.dateFormatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
-//        this.etNama.addTextChangedListener(this.textWatcher);
-//        this.etTanggal.addTextChangedListener(this.textWatcher);
-//        this.etDesc.addTextChangedListener(this.textWatcher);
-//        this.etTempat.addTextChangedListener(this.textWatcher);
 
         if (this.imageUri == null) {
-            this.imgKegiatan.setImageResource(R.drawable.ic_add_green);
+            imgKegiatan.setImageResource(R.drawable.ic_add_green);
         }
 
         if (dataEditKegiatan != null) {
@@ -142,8 +140,8 @@ public class DialogTambahKegiatan extends DialogFragment {
         this.btnTambah.setOnClickListener(new OnClickListener() {
             public void onClick(View paramAnonymousView) {
                 progressDialog = new ProgressDialog(DialogTambahKegiatan.this.getActivity());
-                progressDialog.setMessage("Mohon Tunggu, silahkan hubungi developer jika berhasil upload data untuk mengirimkan notifikasi ke tiap user...");
                 progressDialog.setTitle("Proses");
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 progressDialog.setCancelable(false);
                 progressDialog.show();
                 uploadData();
@@ -167,6 +165,7 @@ public class DialogTambahKegiatan extends DialogFragment {
             @Override
             public void onClick(final DialogInterface dialog, int which) {
                 try {
+                    hapusFoto();
                     hapusKegiatan();
                 } catch (Exception e) {
                 }
@@ -187,6 +186,11 @@ public class DialogTambahKegiatan extends DialogFragment {
         alert.show();
     }
 
+    private void hapusFoto(){
+        StorageReference fotoDelete = getInstance().getReferenceFromUrl(dataEditKegiatan.getFoto());
+        fotoDelete.delete();
+    }
+
     private void hapusKegiatan() {
         DatabaseReference db_node = FirebaseDatabase.getInstance().getReference().child("kegiatan")
                 .child(dataEditKegiatan.getNama() + "_" + dataEditKegiatan.getTanggal());
@@ -201,19 +205,8 @@ public class DialogTambahKegiatan extends DialogFragment {
 
             //memerika apakah admin menggunakan foto baru
             if (imageUri != null) {
-                StorageReference fotoDelete = getInstance().getReferenceFromUrl(dataEditKegiatan.getFoto());
-                fotoDelete.delete();
-
-                this.mStorageRef.child("storage/" + this.imageUri.getLastPathSegment()).putFile(this.imageUri).addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
-                    public void onSuccess(TaskSnapshot paramAnonymousTaskSnapshot) {
-                        simpanData(paramAnonymousTaskSnapshot);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    public void onFailure(@NonNull Exception paramAnonymousException) {
-                        DialogTambahKegiatan.this.progressDialog.dismiss();
-                        Toast.makeText(DialogTambahKegiatan.this.getActivity(), "errror " + paramAnonymousException.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                hapusFoto();
+                simpanFoto();
             }
             //admin menggunakan foto lama
             else {
@@ -222,17 +215,30 @@ public class DialogTambahKegiatan extends DialogFragment {
         }
         //jika kegiatan tersebut adalah kegiatan baru, maka langsung upload foto dan simpan data
         else {
-            this.mStorageRef.child("storage/" + this.imageUri.getLastPathSegment()).putFile(this.imageUri).addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
-                public void onSuccess(TaskSnapshot paramAnonymousTaskSnapshot) {
-                    simpanData(paramAnonymousTaskSnapshot);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                public void onFailure(@NonNull Exception paramAnonymousException) {
-                    DialogTambahKegiatan.this.progressDialog.dismiss();
-                    Toast.makeText(DialogTambahKegiatan.this.getActivity(), "errror " + paramAnonymousException.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            simpanFoto();
         }
+    }
+
+    private void simpanFoto(){
+        this.mStorageRef.child("storage/" + this.imageUri.getLastPathSegment()).putFile(this.imageUri).addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
+            public void onSuccess(TaskSnapshot paramAnonymousTaskSnapshot) {
+                simpanData(paramAnonymousTaskSnapshot);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            public void onFailure(@NonNull Exception paramAnonymousException) {
+                DialogTambahKegiatan.this.progressDialog.dismiss();
+                Toast.makeText(DialogTambahKegiatan.this.getActivity(), "errror " + paramAnonymousException.getMessage().toString(), Toast.LENGTH_SHORT).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<TaskSnapshot>() {
+            @Override
+            public void onProgress(TaskSnapshot taskSnapshot) {
+                double progress = (100.0 * taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
+//                progressDialog.setMessage(Integer.toString((int)progress) + " %");
+                progressDialog.setProgress((int)progress);
+                String progressText = taskSnapshot.getBytesTransferred()/1024+"KB/"+taskSnapshot.getTotalByteCount()/1024+"KB";
+                progressDialog.setTitle(progressText);
+            }
+        });
     }
 
     private void simpanData(TaskSnapshot uriUploaded) {
@@ -266,62 +272,6 @@ public class DialogTambahKegiatan extends DialogFragment {
         });
     }
 
-//    private TextWatcher textWatcher = new TextWatcher() {
-//        public void afterTextChanged(Editable paramAnonymousEditable) {
-//        }
-//
-//        public void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {
-//        }
-//
-//        public void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {
-//            DialogTambahKegiatan.this.cekForm();
-//        }
-//    };
-
-//    private void cekForm() {
-//        String str1 = this.etNama.getText().toString();
-//        String str2 = this.etTanggal.getText().toString();
-//        String str3 = this.etTempat.getText().toString();
-//        String str4 = this.etDesc.getText().toString();
-//        String gambar = imgKegiatan.getDrawable().toString();
-//        if ((!str1.isEmpty()) && (!str2.isEmpty()) && (!str3.isEmpty())
-//                && (!str4.isEmpty()) && (gambar.contains("drawable"))) {
-//            this.imgBtnTambah.setImageResource(R.drawable.ic_add_green);
-//            this.textBtnTambah.setTextColor(getResources().getColor(R.color.green1));
-//            this.cekBtnTambah = true;
-//        }
-//        if (str1.isEmpty()) {
-//            Toast.makeText(getActivity(), "kosong nama", Toast.LENGTH_SHORT).show();
-//            this.imgBtnTambah.setImageResource(R.drawable.ic_add_gray2);
-//            this.textBtnTambah.setTextColor(getResources().getColor(R.color.putihGelap2));
-//            this.cekBtnTambah = false;
-//        }
-//        if (str2.isEmpty()) {
-//            Toast.makeText(getActivity(), "kosong tanggal", Toast.LENGTH_SHORT).show();
-//            this.imgBtnTambah.setImageResource(R.drawable.ic_add_gray2);
-//            this.textBtnTambah.setTextColor(getResources().getColor(R.color.putihGelap2));
-//            this.cekBtnTambah = false;
-//        }
-//        if (str3.isEmpty()) {
-//            Toast.makeText(getActivity(), "kosong tempat", Toast.LENGTH_SHORT).show();
-//            this.imgBtnTambah.setImageResource(R.drawable.ic_add_gray2);
-//            this.textBtnTambah.setTextColor(getResources().getColor(R.color.putihGelap2));
-//            this.cekBtnTambah = false;
-//        }
-//        if (str4.isEmpty()) {
-//            Toast.makeText(getActivity(), "kosong desc", Toast.LENGTH_SHORT).show();
-//            this.imgBtnTambah.setImageResource(R.drawable.ic_add_gray2);
-//            this.textBtnTambah.setTextColor(getResources().getColor(R.color.putihGelap2));
-//            this.cekBtnTambah = false;
-//        }
-//        if (gambar.contains("drawable")) {
-//            Toast.makeText(getActivity(), "kosong gambar", Toast.LENGTH_SHORT).show();
-//            this.imgBtnTambah.setImageResource(R.drawable.ic_add_gray2);
-//            this.textBtnTambah.setTextColor(getResources().getColor(R.color.putihGelap2));
-//            this.cekBtnTambah = false;
-//        }
-//    }
-
     private void foto() {
         this.progressDialog = new ProgressDialog(getActivity());
         this.progressDialog.setMessage("Mohon Tunggu...");
@@ -351,7 +301,6 @@ public class DialogTambahKegiatan extends DialogFragment {
         if ((paramInt2 == -1) && (paramInt1 == PICK_IMAGE)) {
             this.imageUri = paramIntent.getData();
             Picasso.with(getActivity()).load(this.imageUri).into(this.imgKegiatan);
-//            cekForm();
         }
     }
 }

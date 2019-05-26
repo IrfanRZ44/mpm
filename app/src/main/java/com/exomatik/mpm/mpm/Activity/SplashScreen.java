@@ -27,6 +27,7 @@ import java.util.Iterator;
 public class SplashScreen extends AppCompatActivity {
   private AVLoadingIndicatorView loadingIndicatorView;
   private TextView text;
+  private boolean close = false;
 
   protected void onCreate(Bundle paramBundle) {
     super.onCreate(paramBundle);
@@ -68,6 +69,7 @@ public class SplashScreen extends AppCompatActivity {
           else if (localDataString.equals("maintenance")){
             loadingIndicatorView.setVisibility(View.GONE);
             text.setText("Mohon maaf, aplikasi sedang maintenance");
+            close = true;
           }
           else if (localDataString.equals("service")){
             text.setText("Mohon maaf, aplikasi akan maintenance segera");
@@ -85,4 +87,11 @@ public class SplashScreen extends AppCompatActivity {
       }
     }
   };
+
+  @Override
+  public void onBackPressed() {
+    if (close){
+      finish();
+    }
+  }
 }

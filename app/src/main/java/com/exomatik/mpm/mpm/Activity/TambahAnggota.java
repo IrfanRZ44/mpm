@@ -96,18 +96,18 @@ public class TambahAnggota
 //    this.rgJk = ((RadioGroup)findViewById(2131230910));
 //    this.cbPass = ((CheckBox)findViewById(2131230770));
 //    this.view = findViewById(16908290);
-//    this.cbPass.setOnCheckedChangeListener(new OnCheckedChangeListener()
-//    {
-//      public void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
-//      {
-//        if (paramAnonymousBoolean)
-//        {
-//          TambahAnggota.this.textPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-//          return;
-//        }
-//        TambahAnggota.this.textPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-//      }
-//    });
+    cbPass.setOnCheckedChangeListener(new OnCheckedChangeListener()
+    {
+      public void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        if (paramAnonymousBoolean)
+        {
+          TambahAnggota.this.textPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+          return;
+        }
+        TambahAnggota.this.textPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+      }
+    });
 //    this.btnBack.setOnClickListener(new OnClickListener()
 //    {
 //      public void onClick(View paramAnonymousView)

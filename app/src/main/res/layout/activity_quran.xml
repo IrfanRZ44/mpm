@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:elastic="http://schemas.android.com/apk/res-auto"
     android:id="@+id/remote_pdf_root"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green2"
+    >
     <RelativeLayout
         android:id="@+id/customToolbar"
         android:layout_width="fill_parent"
@@ -28,19 +31,46 @@
             android:textColor="@color/putih"
             android:textSize="17.0sp"
             android:textStyle="bold" />
-
         <ImageView
-            android:layout_width="@dimen/width70"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_standard"
+            android:src="@drawable/ic_download_white"
+            android:id="@+id/img_download"
+            />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/img_download"
+            android:layout_centerVertical="true"
             android:layout_marginBottom="@dimen/margin_standard"
-            android:layout_marginRight="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_standard"
             android:src="@drawable/ic_edit_white"
             android:id="@+id/img_edit"
             android:visibility="gone"
             />
 
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/putih"
+            android:id="@+id/text_progress"
+            android:layout_centerHorizontal="true"
+            />
+        <is.arontibo.library.ElasticDownloadView
+            android:id="@+id/elastic_download_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            elastic:backgroundColor="@color/green2"
+            android:layout_below="@+id/text_progress"
+            android:layout_centerHorizontal="true"
+            />
     </RelativeLayout>
 </LinearLayout>

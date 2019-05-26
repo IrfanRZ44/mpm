@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.exomatik.mpm.mpm.CustomDialog.DialogTambahKegiatan;
+import com.exomatik.mpm.mpm.Featured.UserPreference;
 import com.exomatik.mpm.mpm.Fragment.Kegiatan;
 import com.exomatik.mpm.mpm.Model.ModelKegiatan;
 import com.exomatik.mpm.mpm.R;
@@ -28,10 +29,12 @@ public class RecyclerKegiatan
     private Context context;
     private ArrayList<ModelKegiatan> dataList;
     private Activity activity;
+    private UserPreference userPreference;
 
     public RecyclerKegiatan(ArrayList<ModelKegiatan> paramArrayList, Activity activity) {
         this.dataList = paramArrayList;
         this.activity = activity;
+        userPreference = new UserPreference(activity);
     }
 
     public int getItemCount() {
@@ -49,18 +52,22 @@ public class RecyclerKegiatan
         parambidangViewHolder.txtTanggal.setText(((ModelKegiatan) this.dataList.get(paramInt)).getTanggal());
         parambidangViewHolder.txtLokasi.setText(((ModelKegiatan) this.dataList.get(paramInt)).getTempat());
 
-        parambidangViewHolder.rlItemKegiatan.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                DialogTambahKegiatan.dataEditKegiatan = new ModelKegiatan(dataList.get(paramInt).getNama()
-                        , dataList.get(paramInt).getTanggal(), dataList.get(paramInt).getTempat()
-                        , dataList.get(paramInt).getDesc(), dataList.get(paramInt).getFoto());
-                DialogTambahKegiatan tambahKegiatan = DialogTambahKegiatan.newInstance();
-                tambahKegiatan.setCancelable(false);
-                tambahKegiatan.show(activity.getFragmentManager(), "dialog");
-                return false;
+        if (userPreference.getKEY_USER() != null){
+            if (userPreference.getKEY_USER().toString().equals("Admin")){
+                parambidangViewHolder.rlItemKegiatan.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        DialogTambahKegiatan.dataEditKegiatan = new ModelKegiatan(dataList.get(paramInt).getNama()
+                                , dataList.get(paramInt).getTanggal(), dataList.get(paramInt).getTempat()
+                                , dataList.get(paramInt).getDesc(), dataList.get(paramInt).getFoto());
+                        DialogTambahKegiatan tambahKegiatan = DialogTambahKegiatan.newInstance();
+                        tambahKegiatan.setCancelable(false);
+                        tambahKegiatan.show(activity.getFragmentManager(), "dialog");
+                        return false;
+                    }
+                });
             }
-        });
+        }
     }
 
     public bidangViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt) {

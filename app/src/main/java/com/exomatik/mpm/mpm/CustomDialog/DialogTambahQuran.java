@@ -136,10 +136,10 @@ public class DialogTambahQuran extends DialogFragment {
             @Override
             public void onClick(final DialogInterface dialog, int which) {
                 try {
-                    DatabaseReference db_node = FirebaseDatabase.getInstance().getReference().child("quran")
-                            .child(dataEditQuran.getSurah());
-                    db_node.removeValue();
+                    hapusFoto();
+                    hapusData();
                 } catch (Exception e) {
+                    Toast.makeText(getActivity(), "Error : " + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                 }
                 startActivity(new Intent(getActivity(), MainActivity.class));
                 getActivity().finish();
@@ -154,8 +154,18 @@ public class DialogTambahQuran extends DialogFragment {
                 dialog.dismiss();
             }
         });
-
         alert.show();
+    }
+
+    private void hapusData(){
+        DatabaseReference db_node = FirebaseDatabase.getInstance().getReference().child("quran")
+                .child(dataEditQuran.getSurah());
+        db_node.removeValue();
+    }
+
+    private void hapusFoto(){
+        StorageReference filePdfDelete = getInstance().getReferenceFromUrl(dataEditQuran.getFile());
+        filePdfDelete.delete();
     }
 
     private void uploadFile(final Uri pdfUri) {
@@ -163,6 +173,7 @@ public class DialogTambahQuran extends DialogFragment {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDialog.setTitle("Uploading File");
         progressDialog.setProgress(0);
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         final String file = System.currentTimeMillis() + "";
@@ -170,163 +181,114 @@ public class DialogTambahQuran extends DialogFragment {
 
         //kalau data mau di edit,, maka data sebelumnya perlu dihapus dulu
         if (dataEditQuran != null) {
-            DatabaseReference db_node = FirebaseDatabase.getInstance().getReference().child("quran")
-                    .child(dataEditQuran.getSurah());
-            db_node.removeValue();
-
+            hapusData();
             //kalau file yang mau di upload sama dengan data sebelumnya maka file pdf tidak perlu dihapus
             if (textFile.getText().toString().contains(dataEditQuran.getFile())) {
-                DatabaseReference reference = database.getReference();
-                reference.child("quran")
-                        .child(etSurah.getText().toString())
-                        .child("urutan")
-                        .setValue(Integer.parseInt(etUrut.getText().toString()));
-                reference.child("quran")
-                        .child(etSurah.getText().toString())
-                        .child("surah")
-                        .setValue(etSurah.getText().toString());
-                reference.child("quran")
-                        .child(etSurah.getText().toString())
-                        .child("jus")
-                        .setValue(etJus.getText().toString());
-                reference.child("quran")
-                        .child(etSurah.getText().toString())
-                        .child("file")
-                        .setValue(textFile.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            DialogTambahQuran.this.dismiss();
-                            Intent intent = new Intent(getActivity(), MainActivity.class);
-                            startActivity(intent);
-                            getActivity().finish();
-                            Toast.makeText(getActivity(), "File Succesfully Uploaded", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getActivity(), "File Not Succesfully Uploaded", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Gagal menyimpan data", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                simpanData(null);
             }
             //kalau file yang mau di upload tidak sama dengan file sebelumnya maka file pdf sebelumnya di hapus dulu
             else {
-                StorageReference filePdfDelete = getInstance().getReferenceFromUrl(dataEditQuran.getFile());
-                filePdfDelete.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        storageReference.child("Uploads").child(file).putFile(pdfUri)
-                                .addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
-                                    @Override
-                                    public void onSuccess(TaskSnapshot taskSnapshot) {
-                                        String url = taskSnapshot.getDownloadUrl().toString();
-                                        DatabaseReference reference = database.getReference();
-                                        reference.child("quran")
-                                                .child(etSurah.getText().toString())
-                                                .child("urutan")
-                                                .setValue(Integer.parseInt(etUrut.getText().toString()));
-                                        reference.child("quran")
-                                                .child(etSurah.getText().toString())
-                                                .child("surah")
-                                                .setValue(etSurah.getText().toString());
-                                        reference.child("quran")
-                                                .child(etSurah.getText().toString())
-                                                .child("jus")
-                                                .setValue(etJus.getText().toString());
-                                        reference.child("quran")
-                                                .child(etSurah.getText().toString())
-                                                .child("file")
-                                                .setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    DialogTambahQuran.this.dismiss();
-                                                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                                                    startActivity(intent);
-                                                    getActivity().finish();
-                                                    Toast.makeText(getActivity(), "File Succesfully Uploaded", Toast.LENGTH_SHORT).show();
-                                                } else {
-                                                    Toast.makeText(getActivity(), "File Not Succesfully Uploaded", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getActivity(), "File Not Succesfully Uploaded", Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnProgressListener(new OnProgressListener<TaskSnapshot>() {
-                            @Override
-                            public void onProgress(TaskSnapshot taskSnapshot) {
-                                int currentProgress = (int) (100 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                                progressDialog.setProgress(currentProgress);
-                            }
-                        });
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), "Gagal mengganti file", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                hapusFoto();
+                simpanFoto();
             }
         }
         //kalau data baru mau dibuat
         else {
-            storageReference.child("Uploads").child(file).putFile(pdfUri)
-                    .addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(TaskSnapshot taskSnapshot) {
-                            String url = taskSnapshot.getDownloadUrl().toString();
-                            DatabaseReference reference = database.getReference();
-                            reference.child("quran")
-                                    .child(etSurah.getText().toString())
-                                    .child("urutan")
-                                    .setValue(Integer.parseInt(etUrut.getText().toString()));
-                            reference.child("quran")
-                                    .child(etSurah.getText().toString())
-                                    .child("surah")
-                                    .setValue(etSurah.getText().toString());
-                            reference.child("quran")
-                                    .child(etSurah.getText().toString())
-                                    .child("jus")
-                                    .setValue(etJus.getText().toString());
-                            reference.child("quran")
-                                    .child(etSurah.getText().toString())
-                                    .child("file")
-                                    .setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        DialogTambahQuran.this.dismiss();
-                                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                                        startActivity(intent);
-                                        getActivity().finish();
-                                        Toast.makeText(getActivity(), "File Succesfully Uploaded", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        Toast.makeText(getActivity(), "File Not Succesfully Uploaded", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
+            simpanFoto();
+        }
+    }
+
+    private void simpanFoto(){
+        final String file = System.currentTimeMillis() + "";
+        final StorageReference storageReference = storage.getReference();
+        storageReference.child("Uploads").child(file).putFile(pdfUri)
+                .addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(TaskSnapshot taskSnapshot) {
+                        String url = taskSnapshot.getDownloadUrl().toString();
+                        simpanData(url);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "File Not Succesfully Uploaded", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<TaskSnapshot>() {
+            @Override
+            public void onProgress(TaskSnapshot taskSnapshot) {
+//                int currentProgress = (int) (100 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+//                progressDialog.setProgress(currentProgress);
+                double progress = (100.0 * taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
+//                progressDialog.setMessage(Integer.toString((int)progress) + " %");
+                progressDialog.setProgress((int)progress);
+                String progressText = taskSnapshot.getBytesTransferred()/1024+"KB/"+taskSnapshot.getTotalByteCount()/1024+"KB";
+                progressDialog.setTitle(progressText);
+            }
+        });
+    }
+
+    private void simpanData(String url) {
+        DatabaseReference reference = database.getReference();
+        reference.child("quran")
+                .child(etSurah.getText().toString())
+                .child("urutan")
+                .setValue(Integer.parseInt(etUrut.getText().toString()));
+        reference.child("quran")
+                .child(etSurah.getText().toString())
+                .child("surah")
+                .setValue(etSurah.getText().toString());
+        reference.child("quran")
+                .child(etSurah.getText().toString())
+                .child("jus")
+                .setValue(etJus.getText().toString());
+        if (url == null){
+            reference.child("quran")
+                    .child(etSurah.getText().toString())
+                    .child("file")
+                    .setValue(textFile.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        DialogTambahQuran.this.dismiss();
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                        Toast.makeText(getActivity(), "File Succesfully Uploaded", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "File Not Succesfully Uploaded", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getActivity(), "File Not Succesfully Uploaded", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnProgressListener(new OnProgressListener<TaskSnapshot>() {
-                @Override
-                public void onProgress(TaskSnapshot taskSnapshot) {
-                    int currentProgress = (int) (100 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                    progressDialog.setProgress(currentProgress);
+                    Toast.makeText(getActivity(), "Gagal menyimpan data", Toast.LENGTH_SHORT).show();
                 }
             });
         }
-
+        else {
+            reference.child("quran")
+                    .child(etSurah.getText().toString())
+                    .child("file")
+                    .setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        DialogTambahQuran.this.dismiss();
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                        Toast.makeText(getActivity(), "File Succesfully Uploaded", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "File Not Succesfully Uploaded", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getActivity(), "Gagal menyimpan data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     @Override
