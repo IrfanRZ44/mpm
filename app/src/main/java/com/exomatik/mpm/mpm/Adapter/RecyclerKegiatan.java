@@ -4,34 +4,28 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.exomatik.mpm.mpm.CustomDialog.DialogTambahKegiatan;
 import com.exomatik.mpm.mpm.Featured.UserPreference;
-import com.exomatik.mpm.mpm.Fragment.Kegiatan;
-import com.exomatik.mpm.mpm.Model.ModelKegiatan;
+import com.exomatik.mpm.mpm.Model.ModelJadwalKegiatan;
 import com.exomatik.mpm.mpm.R;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.RequestCreator;
 
 import java.util.ArrayList;
 
-public class RecyclerKegiatan
-        extends RecyclerView.Adapter<RecyclerKegiatan.bidangViewHolder> {
+public class RecyclerKegiatan extends RecyclerView.Adapter<RecyclerKegiatan.bidangViewHolder> {
     private Context context;
-    private ArrayList<ModelKegiatan> dataList;
+    private ArrayList<ModelJadwalKegiatan> dataList;
     private Activity activity;
     private UserPreference userPreference;
 
-    public RecyclerKegiatan(ArrayList<ModelKegiatan> paramArrayList, Activity activity) {
+    public RecyclerKegiatan(ArrayList<ModelJadwalKegiatan> paramArrayList, Activity activity) {
         this.dataList = paramArrayList;
         this.activity = activity;
         userPreference = new UserPreference(activity);
@@ -45,19 +39,19 @@ public class RecyclerKegiatan
     }
 
     public void onBindViewHolder(bidangViewHolder parambidangViewHolder, final int paramInt) {
-        Uri localUri = Uri.parse(((ModelKegiatan) this.dataList.get(paramInt)).getFoto());
+        Uri localUri = Uri.parse(((ModelJadwalKegiatan) this.dataList.get(paramInt)).getFoto());
         Picasso.with(this.context).load(localUri).into(parambidangViewHolder.imageView);
 
-        parambidangViewHolder.txtTitle.setText(((ModelKegiatan) this.dataList.get(paramInt)).getNama());
-        parambidangViewHolder.txtTanggal.setText(((ModelKegiatan) this.dataList.get(paramInt)).getTanggal());
-        parambidangViewHolder.txtLokasi.setText(((ModelKegiatan) this.dataList.get(paramInt)).getTempat());
+        parambidangViewHolder.txtTitle.setText(((ModelJadwalKegiatan) this.dataList.get(paramInt)).getNama());
+        parambidangViewHolder.txtTanggal.setText(((ModelJadwalKegiatan) this.dataList.get(paramInt)).getTanggal());
+        parambidangViewHolder.txtLokasi.setText(((ModelJadwalKegiatan) this.dataList.get(paramInt)).getTempat());
 
         if (userPreference.getKEY_USER() != null){
             if (userPreference.getKEY_USER().toString().equals("Admin")){
                 parambidangViewHolder.rlItemKegiatan.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
-                        DialogTambahKegiatan.dataEditKegiatan = new ModelKegiatan(dataList.get(paramInt).getNama()
+                        DialogTambahKegiatan.dataEditKegiatan = new ModelJadwalKegiatan(dataList.get(paramInt).getNama()
                                 , dataList.get(paramInt).getTanggal(), dataList.get(paramInt).getTempat()
                                 , dataList.get(paramInt).getDesc(), dataList.get(paramInt).getFoto());
                         DialogTambahKegiatan tambahKegiatan = DialogTambahKegiatan.newInstance();

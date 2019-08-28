@@ -1,19 +1,15 @@
 package com.exomatik.mpm.mpm.Adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.exomatik.mpm.mpm.Model.ModelKegiatan;
 import com.exomatik.mpm.mpm.Model.ModelQuran;
 import com.exomatik.mpm.mpm.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -53,7 +49,7 @@ public class RecyclerQuran
         public bidangViewHolder(View paramView) {
             super(paramView);
             this.textNomor = ((TextView) paramView.findViewById(R.id.text_nomor));
-            this.textSurah = ((TextView) paramView.findViewById(R.id.text_surah));
+            this.textSurah = ((TextView) paramView.findViewById(R.id.textNama));
             this.textJus= ((TextView) paramView.findViewById(R.id.text_jus));
         }
     }

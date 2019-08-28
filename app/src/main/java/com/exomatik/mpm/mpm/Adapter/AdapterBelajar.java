@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.exomatik.mpm.mpm.Activity.BuatPembelajaran;
+import com.exomatik.mpm.mpm.Activity.ListPembelajaran;
 import com.exomatik.mpm.mpm.Featured.UserPreference;
 import com.exomatik.mpm.mpm.Model.ModelBelajar;
 import com.exomatik.mpm.mpm.Model.ModelVisi;
@@ -144,8 +145,9 @@ public class AdapterBelajar extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         viewHolder.btnEdit.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                BuatPembelajaran.dataBelajar = new ModelBelajar(items.get(position).getNama(),
-                                        items.get(position).getIsi(), items.get(position).getDesc(), true);
+                                BuatPembelajaran.kategoriPembelajaran = ListPembelajaran.kategoriPembelajaran;
+                                BuatPembelajaran.position = Integer.toString(position);
+                                BuatPembelajaran.dataBelajar = items.get(position);
                                 activity.startActivity(new Intent(activity, BuatPembelajaran.class));
                                 activity.finish();
                             }

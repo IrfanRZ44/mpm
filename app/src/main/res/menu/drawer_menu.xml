@@ -17,9 +17,13 @@
             n1:icon="@drawable/ic_belajar_gray"
             n1:title="Belajar Islam" />
         <item
-            n1:id="@+id/nav_quran"
-            n1:icon="@drawable/quran_gray"
-            n1:title="Al-Qur'an" />
+            n1:id="@+id/nav_galeri"
+            n1:icon="@drawable/ic_galeri_gray"
+            n1:title="Galeri" />
+        <!--<item-->
+            <!--n1:id="@+id/nav_quran"-->
+            <!--n1:icon="@drawable/quran_gray"-->
+            <!--n1:title="Al-Qur'an" />-->
     </group>
     <group android:id="@+id/nav_grup_help"
         android:checkableBehavior="single"
@@ -35,7 +39,7 @@
             n1:title="Login" />
         <item
             n1:id="@+id/nav_about"
-            n1:icon="@drawable/ic_people2_black"
-            n1:title="Struktur Organisasi" />
+            n1:icon="@drawable/ic_setting_black"
+            n1:title="Tentang Aplikasi" />
     </group>
 </menu>

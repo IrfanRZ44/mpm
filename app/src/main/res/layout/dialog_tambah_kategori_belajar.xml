@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:id="@+id/sc_profile"
+    n1:layout_width="fill_parent"
+    n1:layout_height="wrap_content"
+    n1:layout_gravity="center_vertical"
+    n1:background="@drawable/border_rl_white"
+    n1:padding="@dimen/margin_small">
+
+    <RelativeLayout
+        n1:layout_width="fill_parent"
+        n1:layout_height="fill_parent"
+        n1:padding="@dimen/margin_standard">
+
+        <ImageView
+            n1:id="@+id/btn_close"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_alignParentRight="true"
+            n1:src="@drawable/ic_close_red" />
+
+        <TextView
+            n1:id="@+id/text_title"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_centerHorizontal="true"
+            n1:layout_marginBottom="@dimen/margin_standard"
+            n1:layout_marginTop="@dimen/margin_standard"
+            n1:text="Kategori Pembelajaran"
+            n1:textColor="@color/hitamGray"
+            n1:textSize="@dimen/title_font"
+            n1:textStyle="bold" />
+
+        <EditText
+            n1:id="@+id/et_nama"
+            n1:layout_width="fill_parent"
+            n1:layout_height="35.0dip"
+            n1:layout_below="@+id/text_title"
+            n1:layout_marginBottom="@dimen/margin_small"
+            n1:hint="Nama Kategori"
+            n1:digits=" asdfghjklzxcvbnmqwertyuiopASDFGHJKLZXCVBNMQWERTYUIOP1234567890"
+            n1:background="@drawable/border_et_transparent_gray"
+            n1:maxLines="1"
+            n1:inputType="textPersonName"
+            n1:textColor="@color/hitam"
+            n1:textSize="@dimen/title_font" />
+
+
+        <RelativeLayout
+            n1:id="@+id/btn_tambah"
+            n1:layout_width="fill_parent"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/et_nama"
+            n1:layout_margin="@dimen/margin_standard"
+            n1:background="@drawable/border_btn_green_white"
+            n1:padding="@dimen/margin_standard">
+
+            <ImageView
+                n1:id="@+id/img_btn_tambah"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:src="@drawable/ic_add_green" />
+
+            <TextView
+                n1:id="@+id/text_btn_tambah"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_centerInParent="true"
+                n1:text="Tambah"
+                n1:textColor="@color/green1"
+                n1:textSize="@dimen/title_font" />
+        </RelativeLayout>
+        <RelativeLayout
+            n1:id="@+id/btn_delete"
+            n1:layout_width="fill_parent"
+            n1:layout_height="wrap_content"
+            n1:layout_below="@+id/btn_tambah"
+            n1:layout_marginRight="@dimen/margin_standard"
+            n1:layout_marginLeft="@dimen/margin_standard"
+            n1:background="@drawable/border_btn_red"
+            n1:padding="@dimen/margin_standard"
+            n1:visibility="gone"
+            >
+
+            <ImageView
+                n1:id="@+id/img_btn_delete"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:src="@drawable/ic_delete_white" />
+
+            <TextView
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_centerInParent="true"
+                n1:text="Hapus"
+                n1:textColor="@color/putih"
+                n1:textSize="@dimen/title_font" />
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

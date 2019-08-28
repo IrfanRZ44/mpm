@@ -27,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class BuatPembelajaran extends AppCompatActivity {
+    public static String kategoriPembelajaran;
+    public static String position;
     public static ModelBelajar dataBelajar;
     private ImageView back;
     private TextView tvToolbar;
@@ -81,7 +83,11 @@ public class BuatPembelajaran extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(BuatPembelajaran.this, MainActivity.class));
+                ListPembelajaran.kategoriPembelajaran = kategoriPembelajaran;
+                kategoriPembelajaran = null;
+                position = null;
+                dataBelajar = null;
+                startActivity(new Intent(BuatPembelajaran.this, ListPembelajaran.class));
                 finish();
             }
         });
@@ -100,7 +106,11 @@ public class BuatPembelajaran extends AppCompatActivity {
                     hapusData();
                 } catch (Exception e) {
                 }
-                startActivity(new Intent(BuatPembelajaran.this, MainActivity.class));
+                ListPembelajaran.kategoriPembelajaran = kategoriPembelajaran;
+                kategoriPembelajaran = null;
+                position = null;
+                dataBelajar = null;
+                startActivity(new Intent(BuatPembelajaran.this, ListPembelajaran.class));
                 finish();
                 Toast.makeText(BuatPembelajaran.this, "Berhasil Menghapus", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
@@ -119,7 +129,8 @@ public class BuatPembelajaran extends AppCompatActivity {
 
     private void hapusData(){
         DatabaseReference db_node = FirebaseDatabase.getInstance().getReference().child("pembelajaran")
-                .child(dataBelajar.getNama());
+                .child(kategoriPembelajaran)
+                .child(position);
         db_node.removeValue();
     }
 
@@ -130,14 +141,25 @@ public class BuatPembelajaran extends AppCompatActivity {
 
         DatabaseReference localDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
-        localDatabaseReference.child("pembelajaran").child(nama).child("isi").setValue(isi);
-        localDatabaseReference.child("pembelajaran").child(nama).child("desc").setValue(desc);
-        localDatabaseReference.child("pembelajaran").child(nama).child("nama").setValue(nama).addOnCompleteListener(new OnCompleteListener<Void>() {
+        Integer pos = Integer.parseInt(position);
+        pos = pos + 1;
+        localDatabaseReference.child("pembelajaran").child(kategoriPembelajaran).child(Integer.toString(pos))
+                .child("isi").setValue(isi);
+        localDatabaseReference.child("pembelajaran").child(kategoriPembelajaran).child(Integer.toString(pos))
+                .child("desc").setValue(desc);
+        localDatabaseReference.child("pembelajaran").child(kategoriPembelajaran).child(Integer.toString(pos))
+                .child("isExpandable").setValue(true);
+        localDatabaseReference.child("pembelajaran").child(kategoriPembelajaran).child(Integer.toString(pos))
+                .child("nama").setValue(nama).addOnCompleteListener(new OnCompleteListener<Void>() {
             public void onComplete(@NonNull Task<Void> paramAnonymousTask) {
                 if (paramAnonymousTask.isSuccessful()) {
                     progressDialog.dismiss();
+                    ListPembelajaran.kategoriPembelajaran = kategoriPembelajaran;
+                    kategoriPembelajaran = null;
+                    position = null;
+                    dataBelajar = null;
                     Toast.makeText(BuatPembelajaran.this, "Berhasil Simpan Data", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(BuatPembelajaran.this, MainActivity.class));
+                    startActivity(new Intent(BuatPembelajaran.this, ListPembelajaran.class));
                     finish();
                 }
             }
@@ -152,7 +174,11 @@ public class BuatPembelajaran extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(BuatPembelajaran.this, MainActivity.class));
+        ListPembelajaran.kategoriPembelajaran = kategoriPembelajaran;
+        kategoriPembelajaran = null;
+        position = null;
+        dataBelajar = null;
+        startActivity(new Intent(BuatPembelajaran.this, ListPembelajaran.class));
         finish();
     }
 }

@@ -28,10 +28,16 @@
         <activity android:name=".Activity.DetailGaleri" />
         <activity android:name=".Activity.DetailQuran" />
         <activity android:name=".Activity.EditVisi" />
-        <activity android:name=".Activity.BuatPembelajaran"></activity>
+        <activity android:name=".Activity.BuatPembelajaran" />
+        <activity android:name=".Activity.TambahGaleri" />
+        <activity android:name=".Activity.TambahKegiatan" />
+        <activity android:name=".Activity.GaleriKegiatan" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="dab265d447c59d4fa283413fcbd75dee808cbcdc" />
+
+        <activity android:name=".Activity.ListPembelajaran"></activity>
     </application>
 
 </manifest>

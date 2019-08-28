@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/putihGelap1"
+    >
+    <RelativeLayout
+        android:id="@+id/customToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/green1">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_back_white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@+id/back"
+            android:gravity="center_vertical"
+            android:text="Tambah Galeri"
+            android:textColor="@color/putih"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:id="@+id/text_galeri"
+            />
+
+        <ImageView
+            android:layout_width="@dimen/width70"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/margin_small"
+            android:src="@drawable/mpm75"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/customToolbar"
+        android:background="@color/putihGelap1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/putihGelap1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="25dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
+                <EditText
+                    android:id="@+id/galeriNama"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height40"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/border_et_putih"
+                    android:hint="Nama Foto"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/hitam"
+                    android:textColorHint="@color/hitamGray" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rl_image"
+                    android:layout_below="@+id/galeriNama"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height40"
+                        android:id="@+id/rl_foto"
+                        android:background="@drawable/border_btn_green"
+                        android:layout_margin="@dimen/margin_small"
+                        >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_galeri_white"
+                            android:id="@+id/img_add_foto"
+                            android:layout_toLeftOf="@+id/btn_foto_anggota"
+                            />
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Foto"
+                            android:textColor="@color/putih"
+                            android:background="@drawable/border_btn_green"
+                            android:id="@+id/btn_foto_anggota"
+                            android:layout_centerHorizontal="true"
+                            />
+                    </RelativeLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:id="@+id/img_foto"
+                        android:visibility="gone"
+                        />
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/tambahGaleri"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/rl_image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    android:background="@color/green1"
+                    android:text="TAMBAH !"
+                    android:textColor="@color/putih"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

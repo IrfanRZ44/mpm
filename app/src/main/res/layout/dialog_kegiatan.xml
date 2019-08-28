@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/customdialog"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:padding="10dp"
+    android:layout_margin="@dimen/margin_big"
+    android:background="@drawable/border_rl_white"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/img_dialog_fragment"
+        />
+    <TextView
+        android:id="@+id/text_nama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/hitam"
+        android:textSize="@dimen/text_font"
+        android:layout_below="@+id/img_dialog_fragment"
+        android:layout_margin="@dimen/margin_small"
+        android:textAlignment="center"
+        />
+    <Button
+        android:id="@+id/dialog_dismiss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BATAL"
+        android:layout_below="@+id/text_nama"
+        android:background="@drawable/border_btn_login"
+        android:layout_marginTop="@dimen/margin_standard"
+        />
+
+</RelativeLayout>

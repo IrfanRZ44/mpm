@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:id="@+id/textView"
-        android:textColor="@color/hitam"
+        android:textColor="@color/putih"
         android:textSize="@dimen/title_font"
         android:padding="@dimen/margin_standard"
         />

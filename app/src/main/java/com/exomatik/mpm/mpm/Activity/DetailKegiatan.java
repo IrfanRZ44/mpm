@@ -3,7 +3,6 @@ package com.exomatik.mpm.mpm.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.ProxyInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,21 +19,15 @@ import android.widget.Toast;
 
 import com.exomatik.mpm.mpm.Featured.SaveImageHelper;
 import com.exomatik.mpm.mpm.Featured.UserPreference;
-import com.exomatik.mpm.mpm.Manifest;
-import com.exomatik.mpm.mpm.Model.ModelKegiatan;
+import com.exomatik.mpm.mpm.Model.ModelJadwalKegiatan;
 import com.github.chrisbanes.photoview.PhotoView;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.RequestCreator;
 import com.exomatik.mpm.mpm.R;
-
-import java.util.UUID;
 
 import dmax.dialog.SpotsDialog;
 
 public class DetailKegiatan extends AppCompatActivity {
-    public static ModelKegiatan detailKegiatan;
+    public static ModelJadwalKegiatan detailKegiatan;
     private ImageView back, btnDownload;
     private PhotoView imgKegiatan;
     private TextView textDesc, textNama, textTanggal, textTempat;

@@ -37,44 +37,44 @@ import java.util.Iterator;
 import io.supercharge.shimmerlayout.ShimmerLayout;
 
 public class ProfileOrganisasi extends Fragment {
-    private TextView bendahara, bpo, dpo, sekertaris, anggotaHumas, anggotaPubdok, anggotaMinat;
-    private RelativeLayout btnEditStruktur;
+//    private TextView bendahara, bpo, dpo, sekertaris, anggotaHumas, anggotaPubdok, anggotaMinat;
+//    private RelativeLayout btnEditStruktur;
     private RelativeLayout btnLogout;
     private UserPreference mUserPreferences;
     private RecyclerView rcVisi;
     private ImageView btnEditVisi;
     private ArrayList<ModelVisi> listVisi = new ArrayList<ModelVisi>();
     RecyclerView.LayoutManager layoutManager;
-    private ShimmerLayout shimmerLoad, shimmerLoad2;
-    private ScrollView svStruktur;
+    private ShimmerLayout shimmerLoad;
+//    private ScrollView svStruktur;
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {
         this.view = paramLayoutInflater.inflate(R.layout.content_profile, paramViewGroup, false);
         this.btnLogout = ((RelativeLayout) this.view.findViewById(R.id.btn_logout));
-        this.btnEditStruktur = ((RelativeLayout) this.view.findViewById(R.id.btn_edit));
-        this.dpo = ((TextView) this.view.findViewById(R.id.text_ketua2_dpo));
-        this.bpo = ((TextView) this.view.findViewById(R.id.text_ketua2));
-        this.sekertaris = ((TextView) this.view.findViewById(R.id.text_sekertaris2));
-        this.bendahara = ((TextView) this.view.findViewById(R.id.text_bendahara2));
-        this.anggotaHumas = ((TextView) this.view.findViewById(R.id.text_anggota_humas2));
-        this.anggotaPubdok = ((TextView) this.view.findViewById(R.id.text_anggota_publik2));
-        this.anggotaMinat = ((TextView) this.view.findViewById(R.id.text_anggota_minat2));
+//        this.btnEditStruktur = ((RelativeLayout) this.view.findViewById(R.id.btn_edit));
+//        this.dpo = ((TextView) this.view.findViewById(R.id.text_ketua2_dpo));
+//        this.bpo = ((TextView) this.view.findViewById(R.id.text_ketua2));
+//        this.sekertaris = ((TextView) this.view.findViewById(R.id.text_sekertaris2));
+//        this.bendahara = ((TextView) this.view.findViewById(R.id.text_bendahara2));
+//        this.anggotaHumas = ((TextView) this.view.findViewById(R.id.text_anggota_humas2));
+//        this.anggotaPubdok = ((TextView) this.view.findViewById(R.id.text_anggota_publik2));
+//        this.anggotaMinat = ((TextView) this.view.findViewById(R.id.text_anggota_minat2));
         this.rcVisi = (RecyclerView) this.view.findViewById(R.id.rc_visi);
         this.btnEditVisi = (ImageView) this.view.findViewById(R.id.img_edit);
         shimmerLoad = (ShimmerLayout) view.findViewById(R.id.shimmer_load);
-        shimmerLoad2 = (ShimmerLayout) view.findViewById(R.id.shimmer_load2);
-        svStruktur = (ScrollView) view.findViewById(R.id.sv_struktur);
-
+//        shimmerLoad2 = (ShimmerLayout) view.findViewById(R.id.shimmer_load2);
+//        svStruktur = (ScrollView) view.findViewById(R.id.sv_struktur);
+        this.mUserPreferences = new UserPreference(getContext());
         shimmerLoad.startShimmerAnimation();
-        shimmerLoad2.startShimmerAnimation();
+//        shimmerLoad2.startShimmerAnimation();
         rcVisi.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         rcVisi.setLayoutManager(layoutManager);
 
-        getDataStruktur();
+        cekUser();
+//        getDataStruktur();
         getDataVisi();
-        this.mUserPreferences = new UserPreference(getContext());
 
         this.btnLogout.setOnClickListener(new OnClickListener() {
             public void onClick(View paramAnonymousView) {
@@ -94,61 +94,64 @@ public class ProfileOrganisasi extends Fragment {
         return this.view;
     }
 
-    ValueEventListener valueEventListener = new ValueEventListener() {
-        public void onCancelled(DatabaseError paramAnonymousDatabaseError) {
-            Toast.makeText(ProfileOrganisasi.this.getActivity(), paramAnonymousDatabaseError.getMessage().toString(), Toast.LENGTH_SHORT).show();
-        }
-
-        public void onDataChange(DataSnapshot paramAnonymousDataSnapshot) {
-            if (paramAnonymousDataSnapshot.exists()) {
-                final ModelStruktur localModelStruktur = (ModelStruktur) paramAnonymousDataSnapshot.getValue(ModelStruktur.class);
-
-                dpo.setText(localModelStruktur.getDpo().toString());
-                bpo.setText(localModelStruktur.getBpo().toString());
-                sekertaris.setText(localModelStruktur.getSekertaris().toString());
-                bendahara.setText(localModelStruktur.getBendahara().toString());
-                anggotaHumas.setText(localModelStruktur.getAnggotaHumas().toString());
-                anggotaMinat.setText(localModelStruktur.getAnggotaMinat().toString());
-                anggotaPubdok.setText(localModelStruktur.getAnggotaPubdok().toString());
-
-                shimmerLoad2.setVisibility(View.GONE);
-                shimmerLoad2.stopShimmerAnimation();
-                svStruktur.setVisibility(View.VISIBLE);
-
-                btnEditStruktur.setOnClickListener(new OnClickListener() {
-                    public void onClick(View paramAnonymousView) {
-                        EditStruktur.dataStruktur = new ModelStruktur(localModelStruktur.getBendahara(), localModelStruktur.getBpo()
-                                , localModelStruktur.getDpo(), localModelStruktur.getSekertaris(), localModelStruktur.getAnggotaHumas()
-                                , localModelStruktur.getAnggotaPubdok(), localModelStruktur.getAnggotaMinat());
-                        startActivity(new Intent(getActivity(), EditStruktur.class));
-                        getActivity().finish();
-                    }
-                });
-            }
-            else {
-                dpo.setText("-");
-                bpo.setText("-");
-                bendahara.setText("-");
-                sekertaris.setText("-");
-                anggotaHumas.setText("-");
-                anggotaPubdok.setText("-");
-                anggotaMinat.setText("-");
-                btnEditStruktur.setOnClickListener(new OnClickListener() {
-                    public void onClick(View paramAnonymousView) {
-                        startActivity(new Intent(getActivity(), EditStruktur.class));
-                        getActivity().finish();
-                    }
-                });
-            }
-            if (mUserPreferences.getKEY_USER() != null) {
-                if (mUserPreferences.getKEY_USER().toString().equals("Admin")) {
-                    btnEditStruktur.setVisibility(View.VISIBLE);
-                    btnEditVisi.setVisibility(View.VISIBLE);
-                    btnLogout.setVisibility(View.VISIBLE);
-                }
+    private void cekUser() {
+        if (mUserPreferences.getKEY_USER() != null) {
+            if (mUserPreferences.getKEY_USER().toString().equals("Admin")) {
+//                    btnEditStruktur.setVisibility(View.VISIBLE);
+                btnEditVisi.setVisibility(View.VISIBLE);
+                btnLogout.setVisibility(View.VISIBLE);
             }
         }
-    };
+    }
+
+//    ValueEventListener valueEventListener = new ValueEventListener() {
+//        public void onCancelled(DatabaseError paramAnonymousDatabaseError) {
+//            Toast.makeText(ProfileOrganisasi.this.getActivity(), paramAnonymousDatabaseError.getMessage().toString(), Toast.LENGTH_SHORT).show();
+//        }
+//
+//        public void onDataChange(DataSnapshot paramAnonymousDataSnapshot) {
+//            if (paramAnonymousDataSnapshot.exists()) {
+//                final ModelStruktur localModelStruktur = (ModelStruktur) paramAnonymousDataSnapshot.getValue(ModelStruktur.class);
+//
+//                dpo.setText(localModelStruktur.getDpo().toString());
+//                bpo.setText(localModelStruktur.getBpo().toString());
+//                sekertaris.setText(localModelStruktur.getSekertaris().toString());
+//                bendahara.setText(localModelStruktur.getBendahara().toString());
+//                anggotaHumas.setText(localModelStruktur.getAnggotaHumas().toString());
+//                anggotaMinat.setText(localModelStruktur.getAnggotaMinat().toString());
+//                anggotaPubdok.setText(localModelStruktur.getAnggotaPubdok().toString());
+//
+//                shimmerLoad2.setVisibility(View.GONE);
+//                shimmerLoad2.stopShimmerAnimation();
+//                svStruktur.setVisibility(View.VISIBLE);
+//
+//                btnEditStruktur.setOnClickListener(new OnClickListener() {
+//                    public void onClick(View paramAnonymousView) {
+//                        EditStruktur.dataStruktur = new ModelStruktur(localModelStruktur.getBendahara(), localModelStruktur.getBpo()
+//                                , localModelStruktur.getDpo(), localModelStruktur.getSekertaris(), localModelStruktur.getAnggotaHumas()
+//                                , localModelStruktur.getAnggotaPubdok(), localModelStruktur.getAnggotaMinat());
+//                        startActivity(new Intent(getActivity(), EditStruktur.class));
+//                        getActivity().finish();
+//                    }
+//                });
+//            }
+//            else {
+//                dpo.setText("-");
+//                bpo.setText("-");
+//                bendahara.setText("-");
+//                sekertaris.setText("-");
+//                anggotaHumas.setText("-");
+//                anggotaPubdok.setText("-");
+//                anggotaMinat.setText("-");
+//                btnEditStruktur.setOnClickListener(new OnClickListener() {
+//                    public void onClick(View paramAnonymousView) {
+//                        startActivity(new Intent(getActivity(), EditStruktur.class));
+//                        getActivity().finish();
+//                    }
+//                });
+//            }
+//        }
+//    };
 
     ValueEventListener valueEventListener2 = new ValueEventListener() {
         public void onCancelled(DatabaseError paramAnonymousDatabaseError) {
@@ -198,9 +201,9 @@ public class ProfileOrganisasi extends Fragment {
     };
     private View view;
 
-    private void getDataStruktur() {
-        FirebaseDatabase.getInstance().getReference("struktur").addListenerForSingleValueEvent(this.valueEventListener);
-    }
+//    private void getDataStruktur() {
+//        FirebaseDatabase.getInstance().getReference("struktur").addListenerForSingleValueEvent(this.valueEventListener);
+//    }
 
     private void getDataVisi() {
         FirebaseDatabase.getInstance().getReference("visi").addListenerForSingleValueEvent(this.valueEventListener2);

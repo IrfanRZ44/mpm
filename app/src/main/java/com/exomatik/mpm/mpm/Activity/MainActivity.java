@@ -21,6 +21,7 @@ import com.exomatik.mpm.mpm.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    public static int request = 0;
     private DrawerLayout drawer;
     private CircleImageView imagePerson;
     private UserPreference mUserPreference;
@@ -51,8 +52,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container
-                , new Kegiatan()).commit();
+        if (request == 0){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container
+                    , new Kegiatan()).commit();
+        } else if (request == 1){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container
+                    , new TanggalHijriah()).commit();
+        } else if (request == 2){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container
+                    , new Belajar()).commit();
+        }
 
         View localView = localNavigationView.getHeaderView(0);
         this.imagePerson = ((CircleImageView) localView.findViewById(R.id.image_person));
@@ -94,10 +103,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container
                         , new TanggalHijriah()).commit();
                 break;
-            case R.id.nav_quran:
+            case R.id.nav_galeri:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container
-                        , new Quran()).commit();
+                        , new fragmentKegiatan()).commit();
                 break;
+//            case R.id.nav_quran:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container
+//                        , new Quran()).commit();
+//                break;
             case R.id.nav_belajar:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container
                         , new Belajar()).commit();

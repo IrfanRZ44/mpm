@@ -1,19 +1,13 @@
 package com.exomatik.mpm.mpm.Activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
-import com.exomatik.mpm.mpm.Adapter.RecyclerKegiatan;
-import com.exomatik.mpm.mpm.Fragment.Kegiatan;
-import com.exomatik.mpm.mpm.Model.ModelKegiatan;
 import com.exomatik.mpm.mpm.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -55,7 +49,24 @@ public class SplashScreen extends AppCompatActivity {
         while (localIterator.hasNext()) {
           String localDataString = (String) ((DataSnapshot) localIterator.next()).getValue(String.class);
 
-          if (localDataString.equals("aktif")){
+//          if (localDataString.equals("aktif")){
+//            new Handler().postDelayed(new Runnable()
+//            {
+//              public void run()
+//              {
+//                Intent localIntent = new Intent(SplashScreen.this, MainActivity.class);
+//                SplashScreen.this.startActivity(localIntent);
+//                SplashScreen.this.finish();
+//              }
+//            }, 2000L);
+//          }
+//          else if (localDataString.equals("maintenance")){
+//            loadingIndicatorView.setVisibility(View.GONE);
+//            text.setText("Mohon maaf, aplikasi sedang maintenance");
+//            close = true;
+//          }
+//          else if (localDataString.equals("service")){
+//            text.setText("Mohon maaf, aplikasi akan maintenance segera");
             new Handler().postDelayed(new Runnable()
             {
               public void run()
@@ -65,24 +76,7 @@ public class SplashScreen extends AppCompatActivity {
                 SplashScreen.this.finish();
               }
             }, 2000L);
-          }
-          else if (localDataString.equals("maintenance")){
-            loadingIndicatorView.setVisibility(View.GONE);
-            text.setText("Mohon maaf, aplikasi sedang maintenance");
-            close = true;
-          }
-          else if (localDataString.equals("service")){
-            text.setText("Mohon maaf, aplikasi akan maintenance segera");
-            new Handler().postDelayed(new Runnable()
-            {
-              public void run()
-              {
-                Intent localIntent = new Intent(SplashScreen.this, MainActivity.class);
-                SplashScreen.this.startActivity(localIntent);
-                SplashScreen.this.finish();
-              }
-            }, 2000L);
-          }
+//          }
         }
       }
     }

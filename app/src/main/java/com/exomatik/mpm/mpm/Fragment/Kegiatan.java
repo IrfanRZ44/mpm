@@ -16,11 +16,11 @@ import android.widget.Toast;
 
 import com.exomatik.mpm.mpm.Activity.DetailKegiatan;
 import com.exomatik.mpm.mpm.Adapter.ItemClickSupport;
+import com.exomatik.mpm.mpm.Adapter.RecyclerGaleri;
 import com.exomatik.mpm.mpm.Adapter.RecyclerKegiatan;
 import com.exomatik.mpm.mpm.CustomDialog.DialogTambahKegiatan;
-import com.exomatik.mpm.mpm.CustomDialog.DialogTambahQuran;
 import com.exomatik.mpm.mpm.Featured.UserPreference;
-import com.exomatik.mpm.mpm.Model.ModelKegiatan;
+import com.exomatik.mpm.mpm.Model.ModelJadwalKegiatan;
 import com.exomatik.mpm.mpm.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,9 +33,9 @@ import io.supercharge.shimmerlayout.ShimmerLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Kegiatan extends Fragment implements ItemClickSupport.OnItemClickListener {
+public class Kegiatan extends Fragment implements ItemClickSupport.OnItemClickListener{
     private CircleImageView btnAddKegiatan;
-    private ArrayList<ModelKegiatan> listKegiatan = new ArrayList();
+    private ArrayList<ModelJadwalKegiatan> listKegiatan = new ArrayList();
     private RecyclerView rcKegiatan;
     private UserPreference userPreference;
     private ShimmerLayout shimmerLoad;
@@ -70,7 +70,7 @@ public class Kegiatan extends Fragment implements ItemClickSupport.OnItemClickLi
     }
 
     public void onItemClicked(RecyclerView paramRecyclerView, int paramInt, View paramView) {
-        DetailKegiatan.detailKegiatan = new ModelKegiatan(((ModelKegiatan) this.listKegiatan.get(paramInt)).getNama().toString(), ((ModelKegiatan) this.listKegiatan.get(paramInt)).getTanggal().toString(), ((ModelKegiatan) this.listKegiatan.get(paramInt)).getTempat().toString(), ((ModelKegiatan) this.listKegiatan.get(paramInt)).getDesc().toString(), ((ModelKegiatan) this.listKegiatan.get(paramInt)).getFoto().toString());
+        DetailKegiatan.detailKegiatan = new ModelJadwalKegiatan(((ModelJadwalKegiatan) this.listKegiatan.get(paramInt)).getNama().toString(), ((ModelJadwalKegiatan) this.listKegiatan.get(paramInt)).getTanggal().toString(), ((ModelJadwalKegiatan) this.listKegiatan.get(paramInt)).getTempat().toString(), ((ModelJadwalKegiatan) this.listKegiatan.get(paramInt)).getDesc().toString(), ((ModelJadwalKegiatan) this.listKegiatan.get(paramInt)).getFoto().toString());
         startActivity(new Intent(getActivity(), DetailKegiatan.class));
         getActivity().finish();
     }
@@ -84,13 +84,13 @@ public class Kegiatan extends Fragment implements ItemClickSupport.OnItemClickLi
             if (paramAnonymousDataSnapshot.exists()) {
                 Iterator localIterator = paramAnonymousDataSnapshot.getChildren().iterator();
                 while (localIterator.hasNext()) {
-                    ModelKegiatan localModelKegiatan = (ModelKegiatan) ((DataSnapshot) localIterator.next()).getValue(ModelKegiatan.class);
-                    Kegiatan.this.listKegiatan.add(new ModelKegiatan(localModelKegiatan.getNama(), localModelKegiatan.getTanggal(), localModelKegiatan.getTempat(), localModelKegiatan.getDesc(), localModelKegiatan.getFoto()));
+                    ModelJadwalKegiatan localModelJadwalKegiatan = (ModelJadwalKegiatan) ((DataSnapshot) localIterator.next()).getValue(ModelJadwalKegiatan.class);
+                    Kegiatan.this.listKegiatan.add(new ModelJadwalKegiatan(localModelJadwalKegiatan.getNama(), localModelJadwalKegiatan.getTanggal(), localModelJadwalKegiatan.getTempat(), localModelJadwalKegiatan.getDesc(), localModelJadwalKegiatan.getFoto()));
                 }
                 rcKegiatan.setVisibility(View.VISIBLE);
                 shimmerLoad.setVisibility(View.GONE);
                 shimmerLoad.stopShimmerAnimation();
-                RecyclerKegiatan localRecyclerKegiatan = new RecyclerKegiatan(Kegiatan.this.listKegiatan, getActivity());
+                RecyclerKegiatan localRecyclerKegiatan = new RecyclerKegiatan(listKegiatan, getActivity());
                 LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(Kegiatan.this.getContext(), 1, false);
                 Kegiatan.this.rcKegiatan.setLayoutManager(localLinearLayoutManager);
                 Kegiatan.this.rcKegiatan.setNestedScrollingEnabled(false);

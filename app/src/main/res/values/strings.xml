@@ -5,7 +5,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="search_menu_title">Search</string>
-    <string name="splash">Selamat Datang di Komunitas Mahasiswa Pecinta Masjid</string>
+    <string name="splash">Ahlan Wa Sahlan</string>
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_utama">ActivityUtama</string>
@@ -44,4 +44,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_title_hijri_date">Hijri</string>
+
+
+    <string name="digit_child"> asdfghjklzxcvbnmqwertyuiopASDFGHJKLZXCVBNMQWERTYUIOP1234567890</string>
 </resources>

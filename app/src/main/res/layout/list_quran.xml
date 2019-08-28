@@ -18,7 +18,7 @@
         n1:textStyle="bold" />
 
     <TextView
-        n1:id="@+id/text_surah"
+        n1:id="@+id/textNama"
         n1:layout_width="wrap_content"
         n1:layout_height="wrap_content"
         n1:layout_marginLeft="@dimen/margin_standard"

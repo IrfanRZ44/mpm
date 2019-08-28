@@ -1,24 +1,19 @@
 package com.exomatik.mpm.mpm.CustomDialog;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.provider.MediaStore.Images.Media;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,42 +21,33 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.exomatik.mpm.mpm.Activity.MainActivity;
-import com.exomatik.mpm.mpm.Model.ModelKegiatan;
+import com.exomatik.mpm.mpm.Model.ModelJadwalKegiatan;
 import com.exomatik.mpm.mpm.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
-import com.google.firebase.storage.UploadTask;
 import com.google.firebase.storage.UploadTask.TaskSnapshot;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.RequestCreator;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.Locale;
 
 import static com.google.firebase.storage.FirebaseStorage.getInstance;
 
 public class DialogTambahKegiatan extends DialogFragment {
-    public static ModelKegiatan dataEditKegiatan;
+    public static ModelJadwalKegiatan dataEditKegiatan;
     private static int PICK_IMAGE = 100;
     private ImageView btnClose;
     private RelativeLayout btnTambah, btnDelete;
@@ -220,7 +206,7 @@ public class DialogTambahKegiatan extends DialogFragment {
     }
 
     private void simpanFoto(){
-        this.mStorageRef.child("storage/" + this.imageUri.getLastPathSegment()).putFile(this.imageUri).addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
+        mStorageRef.child("storage/" + this.imageUri.getLastPathSegment()).putFile(this.imageUri).addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
             public void onSuccess(TaskSnapshot paramAnonymousTaskSnapshot) {
                 simpanData(paramAnonymousTaskSnapshot);
             }

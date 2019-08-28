@@ -4,36 +4,22 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.exomatik.mpm.mpm.Adapter.GridAngkatan;
-import com.exomatik.mpm.mpm.Adapter.RecyclerKegiatan;
-import com.exomatik.mpm.mpm.CustomDialog.DialogAnggota;
 import com.exomatik.mpm.mpm.CustomDialog.DialogEditBerita;
-import com.exomatik.mpm.mpm.CustomDialog.DialogTambahQuran;
 import com.exomatik.mpm.mpm.Featured.UserPreference;
-import com.exomatik.mpm.mpm.Model.ModelKegiatan;
-import com.exomatik.mpm.mpm.Model.ModelUser;
 import com.exomatik.mpm.mpm.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import io.supercharge.shimmerlayout.ShimmerLayout;
